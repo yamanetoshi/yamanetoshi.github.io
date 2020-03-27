@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+  
+    
+    
+      <link href="/css/fonts.css" rel="stylesheet" type="text/css">
+    
+  
+
+  
+  <title>/var/log/messages</title>
+
+  
+  
+  <link rel="stylesheet" href="/css/hugo-octopress.css">
+
+  
+  
+
+  
+    <link rel="stylesheet" href="/css/fork-awesome.min.css">
+  
+
+  
+  <link href="https://weblog.metacircular-evaluator.org/favicon.png" rel="icon">
+
+  
+  <link href="/index.xml" rel="alternate" type="application/rss+xml" title="/var/log/messages" />
+
+  <meta name="description" content="" />
+  <meta name="keywords" content="">
+  <meta name="author" content="">
+
+  
+  <meta name="generator" content="Hugo 0.67.0" />
+
+  
+  
+
+  
+  
+</head>
+<body>
+
+
+<header role="banner">
+<hgroup>
+  
+  <h1><a href="https://weblog.metacircular-evaluator.org/">/var/log/messages</a></h1>
+    <h2></h2>
+</hgroup></header>
+
+
+<nav role="navigation">
+<fieldset class="mobile-nav">
+  
+  <select onchange="location = this.value;">
+    <option value="">Navigate…</option>
+      
+  </select>
+</fieldset>
+
+
+<ul class="main-navigation">
+  
+  
+</ul>
+
+<ul class="subscription">
+  
+</ul>
+
+
+</nav>
+
+
+
+
+  
+
+<div id="main">
+  <div id="content">
+    <div class="blog-index">
+      
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Sep 29, 2014
+     - 2 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2014/09/29/bcm2708-gpio-probe/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/linux/">Linux </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2014/09/29/bcm2708-gpio-probe/">bcm2708_gpio_probe 手続き</a>
+  </h1>
+</header>
+
+        
+          <p><p>確認できている中での手順としては</p>
+<ul>
+<li>struct bcm2708_gpio な領域確保</li>
+<li>platform_get_resource 手続き呼び出し</li>
+<li>platform_set_drvdata 手続き呼び出し</li>
+<li>struct bcm2708_gpio オブジェクトの初期設定</li>
+<li>bcm2708_gpio_irq_init 手続き呼び出し</li>
+<li>gpiochip_add 手続き呼び出し</li>
+</ul>
+<p>となっている模様。丁寧気味に確認してみます。</p></p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2014/09/29/bcm2708-gpio-probe/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Sep 29, 2014
+     - 1 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2014/09/29/memo/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/android/">android </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2014/09/29/memo/">備忘メモ</a>
+  </h1>
+</header>
+
+        
+          <p>Drag and Drop な GridView の実装例について、以下を確認しつつでっちあげてみる必要があるらしい。 GridViewなどのAbsListViewの項目をドラッグ&</p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2014/09/29/memo/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Sep 28, 2014
+     - 3 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2014/09/28/forge-bcm2708-gpio-dot-c/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/linux/">Linux </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2014/09/28/forge-bcm2708-gpio-dot-c/">bcm2708_gpio.c 確認</a>
+  </h1>
+</header>
+
+        
+          <p><p><a href="https://github.com/raspberrypi/linux.git">ここ</a>に RasPI な GPIO のドライバがあると見て git clone してみました。ありますね。何故か driver 配下ではなくて arch/arm/mach-bcm2708/bcm2708_gpio.c な模様。</p>
+<p>とり急ぎではありますが諸々確認を。</p></p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2014/09/28/forge-bcm2708-gpio-dot-c/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Sep 27, 2014
+     - 5 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2014/09/27/function-named-device-add/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/linux/">Linux </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2014/09/27/function-named-device-add/">device_add という手続き</a>
+  </h1>
+</header>
+
+        
+          <p><p>drivers/base/core.c にて定義。device_create_groups_vargs 手続きから呼び出されています。struct device なオブジェクトの初期化をして device_add に渡されてます。</p>
+<p>で、直前エントリにて dpm_sysfs_add が核心? とかって書いたのですが、そっちではなくて device_create_file が、な模様。手続き定義のコメントが以下。</p>
+<pre><code> * device_create_file - create sysfs attribute file for device.
+</code></pre>
+<p>ここから sysfs_create_file という手続きを呼び出していますね。どんどん掘ります。</p></p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2014/09/27/function-named-device-add/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Sep 27, 2014
+     - 1 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2014/09/27/struct-kobject/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/linux/">Linux </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2014/09/27/struct-kobject/">struct kobject 型</a>
+  </h1>
+</header>
+
+        
+          <p><p>あまりにアレなので ldd3 なコンテンツ見つつ struct kobject の確認をしてみた。とりあえず Chapter 14. The Linux Device Model というあたり。</p>
+<ul>
+<li><a href="http://www.makelinux.net/ldd3/">ldd3 の html コンテンツ</a></li>
+</ul>
+<p>ざっくりな理解を以下に列挙してみます。</p>
+<ul>
+<li>kobject は device model を互いに保持する基本的な構造</li>
+<li>階層的な関係を持っていて parent 属性で親の kobject を取得できる</li>
+<li>parent な kobject にぶら下がっている kobject を列挙できる kset という属性がある</li>
+<li>kobject_add したら sysfs にその kobject なエントリができる、とあるな</li>
+<li>ktype という struct kobj_type 型の属性が sysfs 関連の情報を管理しているのかどうか</li>
+<li>struct kernfs_node 型の sd という属性が若干謎</li>
+<li>reference count の操作は kobject_get および kobject_put を使う</li>
+</ul></p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2014/09/27/struct-kobject/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Sep 26, 2014
+     - 3 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2014/09/26/slash-sys-slash-class-slash-gpio-directory/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/linux/">Linux </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2014/09/26/slash-sys-slash-class-slash-gpio-directory/">/sys/class/gpio というディレクトリ</a>
+  </h1>
+</header>
+
+        
+          <p><p>標準な i/f になっているという情報を @yyuasa さんから頂きました。曰く</p>
+<blockquote>
+<p>GPIOだったらGPIOの共通部分見るのがいいと思います。どうやったらsysfsに出せるか見るのであれば。</p>
+</blockquote>
+<p>との事にて drivers/gpio/gpiolib*.c あたりと見て確認開始。</p></p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2014/09/26/slash-sys-slash-class-slash-gpio-directory/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Sep 26, 2014
+     - 1 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2014/09/26/direct-gpio-register-manipulation-in-c-code/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/programming/">programming </a><a class="label" href="https://weblog.metacircular-evaluator.org/categories/linux/">Linux </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2014/09/26/direct-gpio-register-manipulation-in-c-code/">RasPI な GPIO で L チカなプログラム</a>
+  </h1>
+</header>
+
+        
+          <p><p>ええと、以下な二種類の方法がある模様。</p>
+<ul>
+<li>sysfs を使う</li>
+<li>レジスタを mmap して直接書き込む</li>
+</ul>
+<p>とりあえず sysfs について確認してみました。まず抵抗とか LED なんかをブレッドボードに取り付けて #1 な PIN と GND を接続しておきます。</p>
+<p>あとは以下で LED が点灯。</p></p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2014/09/26/direct-gpio-register-manipulation-in-c-code/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Sep 25, 2014
+     - 2 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2014/09/25/drill-down-from-do-fork/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/linux/">Linux </a><a class="label" href="https://weblog.metacircular-evaluator.org/categories/kernel/">kernel </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2014/09/25/drill-down-from-do-fork/">kernel/fork.c の do_fork 始点で掘削してみる</a>
+  </h1>
+</header>
+
+        
+          <p><p>と、言いつつ kernel/fork.c で定義されている手続きを確認したい欲もあり。とりあえず  <a href="https://github.com/torvalds/linux.git">https://github.com/torvalds/linux.git</a> から取得した repository の master branch 見てます。先頭 branch は f3670394c29f みたいです。</p>
+<h2 id="とりあえず">とりあえず</h2>
+<p>system call な i/f からのソレは kernel/fork.c で定義されているのかどうか。入口としては</p>
+<ul>
+<li>kernel_thread 手続き</li>
+<li>fork な system call</li>
+<li>vfork な system call</li>
+<li>clone な system call</li>
+</ul>
+<p>なのかどうか。</p></p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2014/09/25/drill-down-from-do-fork/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Sep 25, 2014
+     - 1 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2014/09/25/update-bash/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/linux/">Linux </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2014/09/25/update-bash/">とりあえず bash 更新</a>
+  </h1>
+</header>
+
+        
+          <p>でびあんであれば以下で OK なのかな。 $ sudo apt-get update $ sudo apt-get install -fy bash 以下が導入される模様。 Inst bash [4.2+dfsg-0.1] (4.2+dfsg-0.1+deb7u1 Debian-Security:7.0/stable [amd64]) Conf bash (4.2+dfsg-0.1+deb7u1 Debian-Security:7.0/stable [amd64]) 本当は全部 upgrade しないと駄目なのでしょうがごめ</p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2014/09/25/update-bash/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Sep 25, 2014
+     - 2 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2014/09/25/do-it-after-a-few-seconds/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/linux/">Linux </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2014/09/25/do-it-after-a-few-seconds/">何秒か後にこれやっといて、な実装について (Linux における C での実装)</a>
+  </h1>
+</header>
+
+        
+          <p><p>ちょっと順に色々確認してみた記録を自分メモ。手順としては</p>
+<ul>
+<li>signal handler を設定</li>
+<li>interval time を設定</li>
+<li>timer_settime を呼び出してタイマを設定</li>
+</ul>
+<p>というカンジ。まず、以下からパクッた実装を確認しつつ man sigaction を確認してみます。</p>
+<ul>
+<li><a href="http://linux-biyori.sakura.ne.jp/program/pr_signal02.php">シグナルとタイマー２</a></li>
+</ul></p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2014/09/25/do-it-after-a-few-seconds/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      
+      
+
+
+
+
+
+
+<div class="pagination">
+
+    
+        
+        
+        
+        <a href="/" aria-label="First" class="label-pagination"><i class="fa fa-angle-double-left fa-lg"></i></a>
+    
+
+    
+    
+        <a href="/page/140/" aria-label="Previous" class="label-pagination"><i class="fa fa-angle-left fa-lg"> prev </i>
+    
+
+    
+    
+        <a href="/page/142/" aria-label="Next" class="label-pagination"> next <i class="fa fa-angle-right fa-lg"></i></a>
+    
+
+    
+    
+        <a href="/page/198/" aria-label="Last"><i class="fa fa-angle-double-right fa-lg"></i></a>
+    
+
+</div>
+
+  
+    </div>
+    
+
+<aside class="sidebar thirds">
+  <section class="first odd">
+
+    
+      <h1>About Me</h1>
+    
+
+    <p>
+      
+        <p><a href="https://about.me/yamanetoshi"><img src="/images/glider.png" alt="glider.png"/></a></p><p><strong>YAMANE Toshiaki</strong>(<a href="https://twitter.com/yamanetoshi">@yamanetoshi</a>)</p>
+      
+    </p>
+  </section>
+
+
+
+  
+  <ul class="sidebar-nav">
+    <li class="sidebar-nav-item">
+      <a target="_blank" href="https://github.com/yamanetoshi" title="https://github.com/yamanetoshi"><i class="fa fa-github fa-3x"></i></a>
+      
+      
+      <a target="_blank" href="https://twitter.com/yamanetoshi" title="https://twitter.com/yamanetoshi"><i class="fa fa-twitter fa-3x"></i></a>
+      
+         
+      
+      
+      
+      
+      
+      
+      <a target="_blank" href="https://www.instagram.com/yamanetoshi" title="https://www.instagram.com/yamanetoshi"><i class="fa fa-instagram fa-3x"></i></a>
+      
+
+    
+    
+    </li>
+  </ul>
+
+  
+
+  
+    
+      <section class="odd">
+        
+        
+      </section>
+    
+  
+
+  
+  
+  
+    
+      <section class="even">
+        <h1>Recent Posts</h1>
+        <ul id="recent_posts">
+          
+          
+            
+              <li class="post">
+                <a href="/blog/2020/03/27/hugo-transition/">hugo の移行</a>
+              </li>
+            
+          
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2020/02/10/go-pattern/">隅のカタチ</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2020/01/27/readable-code/">リーダブルコード</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2020/01/05/this-year/">今年</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2020/01/04/basic-form-of-life-and-death/">死活の基本形</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2019/12/31/new-years-eve/">おおみそか</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2019/12/27/bicycle-purchase/">自転車購入</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2019/12/25/year-end-todo/">年末年始の TODO</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2019/12/05/wrapping-up/">スッキリわかる Python 入門要約</a>
+              </li>
+            
+          
+        </ul>
+      </section>
+    
+  
+
+<section>
+    <h1>Books</h1>
+ <ul>
+<li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/4873117127/yamanetoshi-22/' target='_blank'><img src='/images/514ifs4Y5bL._SL160_.jpg' width='113' height='160' alt='コンピュータシステムの理論と実装 ―モダンなコンピュータの作り方' title='コンピュータシステムの理論と実装 ―モダンなコンピュータの作り方' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/4873116309/yamanetoshi-22/' target='_blank'><img src='/images/41SlY0zvpKL._SL160_.jpg' width='113' height='160' alt='Team Geek ―Googleのギークたちはいかにしてチームを作るのか' title='Team Geek ―Googleのギークたちはいかにしてチームを作るのか' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/4873114535/yamanetoshi-22/' target='_blank'><img src='/images/51NDW60LBQL._SL160_.jpg' width='125' height='160' alt='Prototyping Lab ―「作りながら考える」ためのArduino実践レシピ (Make:PROJECTS)' title='Prototyping Lab ―「作りながら考える」ためのArduino実践レシピ (Make:PROJECTS)' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/B0054RGYNQ/yamanetoshi-22/' target='_blank'><img src='/images/51F7PJ0KzYL._SL160_.jpg' width='124' height='160' alt='Fearless Change: Patterns for Introducing New Ideas' title='Fearless Change: Patterns for Introducing New Ideas' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/4774145211/yamanetoshi-22/' target='_blank'><img src='/images/515WitVr5lL._SL160_.jpg' width='112' height='160' alt='プロセッサを支える技術　　－－果てしなくスピードを追求する世界 (WEB+DB PRESS plus)' title='プロセッサを支える技術　　－－果てしなくスピードを追求する世界 (WEB+DB PRESS plus)' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/489471163X/yamanetoshi-22/' target='_blank'><img src='/images/51ZSMEJ9Y2L._SL160_.jpg' width='112' height='160' alt='計算機プログラムの構造と解釈' title='計算機プログラムの構造と解釈' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/4798023809/yamanetoshi-22/' target='_blank'><img src='/images/41R5gj5VRFL._SL160_.jpg' width='113' height='160' alt='入門Git' title='入門Git' /></a>
+</li>
+</ul>
+ </section>
+ <section>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+ <ins class="adsbygoogle"
+     style="display:inline-block;width:120px;height:600px"
+     data-ad-client="ca-pub-5885095939968393"
+     data-ad-slot="7922724663"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</section>
+  
+</aside>
+    
+  </div>
+</div>
+    <footer role="contentinfo">
+      <p>Copyright &copy; 2020  - <a href="https://weblog.metacircular-evaluator.org/license/">License</a> -
+        <span class="credit">Powered by <a target="_blank" href="https://gohugo.io">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/">Hugo-Octopress</a> theme.
+      </p>
+    </footer>
+
+    
+    
+    
+
+    
+      <script>
+        var _gaq=[['_setAccount','UA-45385426-1'],['_trackPageview']];
+        (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+        g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(g,s)}(document,'script'));
+      </script>
+    
+  </body>
+</html>
+   
+

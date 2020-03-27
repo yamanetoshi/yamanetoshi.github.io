@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+  
+    
+    
+      <link href="/css/fonts.css" rel="stylesheet" type="text/css">
+    
+  
+
+  
+  <title>/var/log/messages</title>
+
+  
+  
+  <link rel="stylesheet" href="/css/hugo-octopress.css">
+
+  
+  
+
+  
+    <link rel="stylesheet" href="/css/fork-awesome.min.css">
+  
+
+  
+  <link href="https://weblog.metacircular-evaluator.org/favicon.png" rel="icon">
+
+  
+  <link href="/index.xml" rel="alternate" type="application/rss+xml" title="/var/log/messages" />
+
+  <meta name="description" content="" />
+  <meta name="keywords" content="">
+  <meta name="author" content="">
+
+  
+  <meta name="generator" content="Hugo 0.67.0" />
+
+  
+  
+
+  
+  
+</head>
+<body>
+
+
+<header role="banner">
+<hgroup>
+  
+  <h1><a href="https://weblog.metacircular-evaluator.org/">/var/log/messages</a></h1>
+    <h2></h2>
+</hgroup></header>
+
+
+<nav role="navigation">
+<fieldset class="mobile-nav">
+  
+  <select onchange="location = this.value;">
+    <option value="">Navigate…</option>
+      
+  </select>
+</fieldset>
+
+
+<ul class="main-navigation">
+  
+  
+</ul>
+
+<ul class="subscription">
+  
+</ul>
+
+
+</nav>
+
+
+
+
+  
+
+<div id="main">
+  <div id="content">
+    <div class="blog-index">
+      
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Jan 11, 2015
+     - 1 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2015/01/11/yesterday/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/ingress/">ingress </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2015/01/11/yesterday/">昨日</a>
+  </h1>
+</header>
+
+        
+          <p><p>朝、古波蔵の farm を自転車で六周。どうも一周 2km らしい。12km なのか。</p>
+<p>その後、帰宅して昼飯の支度をして食事を摂った後にちょろっと仕事をして出発。</p>
+<ul>
+<li>金城</li>
+<li>那覇空港</li>
+<li>西町</li>
+</ul>
+<p>あたりから再度古波蔵へ。そこからさらに六周で 12km。そろそろミニベロはキツくなってき始めてる感がorz</p></p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2015/01/11/yesterday/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Jan 10, 2015
+     - 1 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2015/01/10/buta-don/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/misc/">misc </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2015/01/10/buta-don/">豚丼</a>
+  </h1>
+</header>
+
+        
+          <p><p>昨晩、イキオイでたれを製造。</p>
+<iframe src="https://www.flickr.com/photos/yamane-toshiaki/16050669640/player/" width="500" height="375" frameborder="0" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+<p>ぼくが使っているのは下記レシピです。</p>
+<ul>
+<li><a href="http://cookpad.com/recipe/2338091">帯広@家庭でも大ブーム☆豚丼たれ</a></li>
+</ul></p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2015/01/10/buta-don/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Jan 9, 2015
+     - 2 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2015/01/09/making-debian-sid-docker-environment/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/linux/">Linux </a><a class="label" href="https://weblog.metacircular-evaluator.org/categories/docker/">docker </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2015/01/09/making-debian-sid-docker-environment/">docker な sid の環境作るメモ</a>
+  </h1>
+</header>
+
+        
+          <p><p>ええと、<code>sudo docker search debian</code> したら Official Debian base image というソレがあったのでとりあえず pull します。</p>
+<pre><code>$ sudo docker pull debian
+</code></pre>
+<p>とりあえずテンプレは sid で云々してみます。以下で起動なのかな。</p>
+<pre><code>$ sudo docker run -i -t 09c0c850c2f4 /bin/bash
+root@7875f0db0b6b:/#
+</code></pre></p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2015/01/09/making-debian-sid-docker-environment/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Jan 8, 2015
+     - 1 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2015/01/08/color-picker-in-gimp/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/misc/">misc </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2015/01/08/color-picker-in-gimp/">gimp の color picker</a>
+  </h1>
+</header>
+
+        
+          <p>ええとスポイトにしておいて Shift 押しながら click で Color Picker Information 出ました。以前は Toolbox で表示されてた記憶があるのですが今は違うのか。 確認にえらく時間がかかって凹</p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2015/01/08/color-picker-in-gimp/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Jan 8, 2015
+     - 1 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2015/01/08/date-check-in-ondatechanged/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/android/">android </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2015/01/08/date-check-in-ondatechanged/">onDateChanged における日付のチェック</a>
+  </h1>
+</header>
+
+        
+          <p><p>ええと、AlarmManager を使って日付変更な Broadcast を飛ばして、という処理を実装してたのですが (下記を参考に実装したはず)</p>
+<ul>
+<li><a href="http://wada811.blogspot.com/2014/03/date-time-changed-broadcast-receiver.html">日付や時刻・タイムゾーンの変更を検知する BroadcastReceiver</a></li>
+</ul>
+<p>設定されてる日付で何の処理も行なわれてなくて、その設定日が更新されていない場合 (何らかの処理を行なえば設定日も更新される) に設定日を更新してしまうような実装を書いてたのですがその試験でハマりましたので備忘録を。</p></p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2015/01/08/date-check-in-ondatechanged/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Jan 7, 2015
+     - 1 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2015/01/07/ingress-in-dec-30-th/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/ingress/">ingress </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2015/01/07/ingress-in-dec-30-th/">12.30 の (?) #ingress</a>
+  </h1>
+</header>
+
+        
+          <p>青くしたのに緑のリンクが残る、という謎挙動を確認。 どうもサーバが不調だったようですね。それともおおみそかでアクセスが大量だったのかな。</p>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Jan 6, 2015
+     - 1 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2015/01/06/i-do-not-know-why-the-account-is-correct/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/misc/">misc </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2015/01/06/i-do-not-know-why-the-account-is-correct/">年末調整というか税金の額が不思議な件</a>
+  </h1>
+</header>
+
+        
+          <p>何故に帳尻が合うのかが分からないw つうか合わないと駄目なのも分かってますが、預り金から納付する税額を引くと見事に差引還付な額になってて (ry 来年</p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2015/01/06/i-do-not-know-why-the-account-is-correct/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Jan 5, 2015
+     - 1 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2015/01/05/todo/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/misc/">misc </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2015/01/05/todo/">TODO</a>
+  </h1>
+</header>
+
+        
+          <p>今日、すっかり忘れてたので。 node-http-proxy で某サイトへのアクセスな request だの response だのをナニ sid な Docker で lintian な試験をする環境を作って云々 下手するとこちら方面スルーにな</p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2015/01/05/todo/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Jan 5, 2015
+     - 1 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2015/01/05/hatsumoude/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/misc/">misc </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2015/01/05/hatsumoude/">知らんかった</a>
+  </h1>
+</header>
+
+        
+          <p>今日、#ingress な用事で朝方に波の上宮に行ってきたのですが、仕事が始まる日って会社で初詣に行くんですね。神社近くでアンケート取ってらっ</p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2015/01/05/hatsumoude/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Jan 4, 2015
+     - 1 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2015/01/04/oo-shima-hijiki/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/misc/">misc </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2015/01/04/oo-shima-hijiki/">大島ひじき</a>
+  </h1>
+</header>
+
+        
+          <p>年末に広島から送ってもらった大島のひじきを煮た。とりあえず じゃこ にんじん あぶらげ あたりと。 そして あぶらげと戻して洗ったひじきをごま油で炒めて</p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2015/01/04/oo-shima-hijiki/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      
+      
+
+
+
+
+
+
+<div class="pagination">
+
+    
+        
+        
+        
+        <a href="/" aria-label="First" class="label-pagination"><i class="fa fa-angle-double-left fa-lg"></i></a>
+    
+
+    
+    
+        <a href="/page/128/" aria-label="Previous" class="label-pagination"><i class="fa fa-angle-left fa-lg"> prev </i>
+    
+
+    
+    
+        <a href="/page/130/" aria-label="Next" class="label-pagination"> next <i class="fa fa-angle-right fa-lg"></i></a>
+    
+
+    
+    
+        <a href="/page/198/" aria-label="Last"><i class="fa fa-angle-double-right fa-lg"></i></a>
+    
+
+</div>
+
+  
+    </div>
+    
+
+<aside class="sidebar thirds">
+  <section class="first odd">
+
+    
+      <h1>About Me</h1>
+    
+
+    <p>
+      
+        <p><a href="https://about.me/yamanetoshi"><img src="/images/glider.png" alt="glider.png"/></a></p><p><strong>YAMANE Toshiaki</strong>(<a href="https://twitter.com/yamanetoshi">@yamanetoshi</a>)</p>
+      
+    </p>
+  </section>
+
+
+
+  
+  <ul class="sidebar-nav">
+    <li class="sidebar-nav-item">
+      <a target="_blank" href="https://github.com/yamanetoshi" title="https://github.com/yamanetoshi"><i class="fa fa-github fa-3x"></i></a>
+      
+      
+      <a target="_blank" href="https://twitter.com/yamanetoshi" title="https://twitter.com/yamanetoshi"><i class="fa fa-twitter fa-3x"></i></a>
+      
+         
+      
+      
+      
+      
+      
+      
+      <a target="_blank" href="https://www.instagram.com/yamanetoshi" title="https://www.instagram.com/yamanetoshi"><i class="fa fa-instagram fa-3x"></i></a>
+      
+
+    
+    
+    </li>
+  </ul>
+
+  
+
+  
+    
+      <section class="odd">
+        
+        
+      </section>
+    
+  
+
+  
+  
+  
+    
+      <section class="even">
+        <h1>Recent Posts</h1>
+        <ul id="recent_posts">
+          
+          
+            
+              <li class="post">
+                <a href="/blog/2020/03/27/hugo-transition/">hugo の移行</a>
+              </li>
+            
+          
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2020/02/10/go-pattern/">隅のカタチ</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2020/01/27/readable-code/">リーダブルコード</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2020/01/05/this-year/">今年</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2020/01/04/basic-form-of-life-and-death/">死活の基本形</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2019/12/31/new-years-eve/">おおみそか</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2019/12/27/bicycle-purchase/">自転車購入</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2019/12/25/year-end-todo/">年末年始の TODO</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2019/12/05/wrapping-up/">スッキリわかる Python 入門要約</a>
+              </li>
+            
+          
+        </ul>
+      </section>
+    
+  
+
+<section>
+    <h1>Books</h1>
+ <ul>
+<li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/4873117127/yamanetoshi-22/' target='_blank'><img src='/images/514ifs4Y5bL._SL160_.jpg' width='113' height='160' alt='コンピュータシステムの理論と実装 ―モダンなコンピュータの作り方' title='コンピュータシステムの理論と実装 ―モダンなコンピュータの作り方' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/4873116309/yamanetoshi-22/' target='_blank'><img src='/images/41SlY0zvpKL._SL160_.jpg' width='113' height='160' alt='Team Geek ―Googleのギークたちはいかにしてチームを作るのか' title='Team Geek ―Googleのギークたちはいかにしてチームを作るのか' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/4873114535/yamanetoshi-22/' target='_blank'><img src='/images/51NDW60LBQL._SL160_.jpg' width='125' height='160' alt='Prototyping Lab ―「作りながら考える」ためのArduino実践レシピ (Make:PROJECTS)' title='Prototyping Lab ―「作りながら考える」ためのArduino実践レシピ (Make:PROJECTS)' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/B0054RGYNQ/yamanetoshi-22/' target='_blank'><img src='/images/51F7PJ0KzYL._SL160_.jpg' width='124' height='160' alt='Fearless Change: Patterns for Introducing New Ideas' title='Fearless Change: Patterns for Introducing New Ideas' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/4774145211/yamanetoshi-22/' target='_blank'><img src='/images/515WitVr5lL._SL160_.jpg' width='112' height='160' alt='プロセッサを支える技術　　－－果てしなくスピードを追求する世界 (WEB+DB PRESS plus)' title='プロセッサを支える技術　　－－果てしなくスピードを追求する世界 (WEB+DB PRESS plus)' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/489471163X/yamanetoshi-22/' target='_blank'><img src='/images/51ZSMEJ9Y2L._SL160_.jpg' width='112' height='160' alt='計算機プログラムの構造と解釈' title='計算機プログラムの構造と解釈' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/4798023809/yamanetoshi-22/' target='_blank'><img src='/images/41R5gj5VRFL._SL160_.jpg' width='113' height='160' alt='入門Git' title='入門Git' /></a>
+</li>
+</ul>
+ </section>
+ <section>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+ <ins class="adsbygoogle"
+     style="display:inline-block;width:120px;height:600px"
+     data-ad-client="ca-pub-5885095939968393"
+     data-ad-slot="7922724663"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</section>
+  
+</aside>
+    
+  </div>
+</div>
+    <footer role="contentinfo">
+      <p>Copyright &copy; 2020  - <a href="https://weblog.metacircular-evaluator.org/license/">License</a> -
+        <span class="credit">Powered by <a target="_blank" href="https://gohugo.io">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/">Hugo-Octopress</a> theme.
+      </p>
+    </footer>
+
+    
+    
+    
+
+    
+      <script>
+        var _gaq=[['_setAccount','UA-45385426-1'],['_trackPageview']];
+        (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+        g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(g,s)}(document,'script'));
+      </script>
+    
+  </body>
+</html>
+   
+

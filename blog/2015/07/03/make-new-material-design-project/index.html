@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+  
+    
+    
+      <link href="/css/fonts.css" rel="stylesheet" type="text/css">
+    
+  
+
+  
+  <title>新規に material design なプロジェクトを作ってみる</title>
+
+  
+  
+  <link rel="stylesheet" href="/css/hugo-octopress.css">
+
+  
+  
+
+  
+    <link rel="stylesheet" href="/css/fork-awesome.min.css">
+  
+
+  
+  <link href="https://weblog.metacircular-evaluator.org/favicon.png" rel="icon">
+
+  
+  
+
+  <meta name="description" content="" />
+  <meta name="keywords" content="">
+  <meta name="author" content="">
+
+  
+  <meta name="generator" content="Hugo 0.67.0" />
+
+  
+  
+
+  
+  
+</head>
+<body>
+
+
+<header role="banner">
+<hgroup>
+  
+  <h1><a href="https://weblog.metacircular-evaluator.org/">/var/log/messages</a></h1>
+    <h2></h2>
+</hgroup></header>
+
+
+<nav role="navigation">
+<fieldset class="mobile-nav">
+  
+  <select onchange="location = this.value;">
+    <option value="">Navigate…</option>
+      
+  </select>
+</fieldset>
+
+
+<ul class="main-navigation">
+  
+  
+</ul>
+
+<ul class="subscription">
+  
+</ul>
+
+
+</nav>
+
+
+<div id="main">
+  <div id="content">
+    <div>
+      <article class="hentry" role="article">
+
+        
+        
+
+<header>
+  <p class="meta">Jul 3, 2015
+     - 2 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2015/07/03/make-new-material-design-project/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/android/">android </a>
+    
+  </p>
+  <h1 class="entry-title">
+     新規に material design なプロジェクトを作ってみる 
+  </h1>
+</header>
+
+
+        <div class="entry-content">
+          
+          
+          
+          <p>とりあえず build.gradle の dependencies に以下を追記。</p>
+<pre><code>    compile 'com.android.support:recyclerview-v7:22.2.0'
+    compile 'com.android.support:design:22.2.0'
+</code></pre><p>あとはコピペでプロトタイプはできました。</p>
+<p>で、試しに動かしてみたらオチた。</p>
+<ul>
+<li>android:theme=&rdquo;@style/AppTheme.NoActionBar&rdquo; になってませんでした</li>
+<li>res/values/styles.xml に AppTheme.NoActionBar の定義がありませんでした</li>
+<li>色の定義もスルーしてたので AppTheme に追加</li>
+<li>res/values/color.xml を追加</li>
+</ul>
+<p>ここをベースに</p>
+<ul>
+<li>カード UI にしてみたり</li>
+<li>onItemClickListener を使えるように</li>
+<li>タッチフィードバックってどうやってつけるの</li>
+</ul>
+<p>など色々確認してみようと思います。</p>
+<h2 id="途中でパケジ名変更しようとしてハマるなど">途中でパケジ名変更しようとしてハマるなど</h2>
+<p>ディレクトリの名前を手動で変更して AndroidStudio 起動して以下。</p>
+<ul>
+<li>AndroidManifest.xml の package や name 属性の情報修正</li>
+<li>build.gradle の applicationId 修正</li>
+</ul>
+<p>clean build せずに rebuild してハマりました。あと、Default Activity not found と言われてるんですがこれってどこ見れば良いのやらxD</p>
+<h3 id="よくよく見てみるに">よくよく見てみるに</h3>
+<ul>
+<li>package 文が未修正</li>
+<li>.idea/workspace.xml に前の情報が残っています</li>
+</ul>
+<p>vi で修正。build はパスするようになっているようです。</p>
+<h2 id="カード-ui-にしてみる">カード UI にしてみる</h2>
+<p>てくぶ本を見つつ盛り込み。どうやら RecycleView には add{Header, Footer}View が無いのか、あるいは他のクラスに移譲されているのかどうか。これから確認を。</p>
+<h3 id="layoutmanager">LayoutManager?</h3>
+<p>つうかこのあたり、AOSP な RecyclerView の実装を確認しないとまずいな。別途ソース入手して確認します。</p>
+<h3 id="margindecoration">MarginDecoration?</h3>
+<p>なんか色々材料があったので盛り込んでみました。</p>
+<ul>
+<li><a href="http://stackoverflow.com/questions/28998327/how-to-add-a-simple-8dp-header-footer-to-androids-recyclerview">How to add a simple 8dp header/footer to Android&rsquo;s RecyclerView?</a></li>
+<li><a href="https://github.com/chiuki/android-recyclerview/blob/master/app/src/main/java/com/sqisland/android/recyclerview/MarginDecoration.java">MarginDecoration.java</a></li>
+</ul>
+<p>あまり正確ではない気もしますがカード UI の件は commit 作って云々な方向とします。ちなみに Layout.xml 方面にて</p>
+<ul>
+<li>android:paddingTop および android:paddingBottom 設定せず</li>
+<li>それぞれの padding の値が 4dp</li>
+<li>それぞれの padding の値が 8dp</li>
+</ul>
+<p>というナニで確認したのですがハードコピィが以下です。</p>
+<p>まず設定なし。</p>
+<iframe src="https://www.flickr.com/photos/yamane-toshiaki/19351127811/in/dateposted-public/player/" width="360" height="640" frameborder="0" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+<p>次が 4dp。</p>
+<iframe src="https://www.flickr.com/photos/yamane-toshiaki/19159553478/in/dateposted-public/player/" width="360" height="640" frameborder="0" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+<p>最後が 8dp.</p>
+<iframe src="https://www.flickr.com/photos/yamane-toshiaki/18724642854/in/dateposted-public/player/" width="360" height="640" frameborder="0" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+<p>続きは別途で。とりあえずヘッダ、フッタのあたりはこれでヨシってことにします (ぇ</p>
+        </div>
+        
+
+<footer>
+  <p class="meta">
+    <span class="byline author vcard">Posted by <span class="fn"></span></span>
+    
+    <time>Jul 3, 2015</time>
+    
+    </span>
+  </p>
+
+  
+
+  <p class="meta">
+    
+        <a class="basic-alignment left" href="https://weblog.metacircular-evaluator.org/blog/2015/07/02/reconfirmation-of-toolbar-scrolling-sample/" title="Toolbar Scrolling なサンプル再確認">Toolbar Scrolling なサンプル再確認</a>
+    
+
+    
+      <a class="basic-alignment right" href="https://weblog.metacircular-evaluator.org/blog/2015/07/04/add-touch-feedback-to-card-ui/" title="カード UI に touch feedback つけたい件">カード UI に touch feedback つけたい件</a>
+    
+  </p>
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle"
+         style="display:inline-block;width:728px;height:90px"
+         data-ad-client="ca-pub-5885095939968393"
+         data-ad-slot="3213323462"></ins>
+  <script>
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+ </script>
+
+  
+    
+      <div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function() {
+      
+      
+      
+      if (window.location.hostname == "localhost")
+          return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'yamanetoshi';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    
+  
+</footer>
+
+      </article>
+    </div>
+    
+
+<aside class="sidebar thirds">
+  <section class="first odd">
+
+    
+      <h1>About Me</h1>
+    
+
+    <p>
+      
+        <p><a href="https://about.me/yamanetoshi"><img src="/images/glider.png" alt="glider.png"/></a></p><p><strong>YAMANE Toshiaki</strong>(<a href="https://twitter.com/yamanetoshi">@yamanetoshi</a>)</p>
+      
+    </p>
+  </section>
+
+
+
+  
+  <ul class="sidebar-nav">
+    <li class="sidebar-nav-item">
+      <a target="_blank" href="https://github.com/yamanetoshi" title="https://github.com/yamanetoshi"><i class="fa fa-github fa-3x"></i></a>
+      
+      
+      <a target="_blank" href="https://twitter.com/yamanetoshi" title="https://twitter.com/yamanetoshi"><i class="fa fa-twitter fa-3x"></i></a>
+      
+         
+      
+      
+      
+      
+      
+      
+      <a target="_blank" href="https://www.instagram.com/yamanetoshi" title="https://www.instagram.com/yamanetoshi"><i class="fa fa-instagram fa-3x"></i></a>
+      
+
+    
+    
+    </li>
+  </ul>
+
+  
+
+  
+    
+      <section class="odd">
+        
+        
+      </section>
+    
+  
+
+  
+  
+  
+    
+      <section class="even">
+        <h1>Recent Posts</h1>
+        <ul id="recent_posts">
+          
+          
+            
+              <li class="post">
+                <a href="/blog/2020/03/27/hugo-transition/">hugo の移行</a>
+              </li>
+            
+          
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2020/02/10/go-pattern/">隅のカタチ</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2020/01/27/readable-code/">リーダブルコード</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2020/01/05/this-year/">今年</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2020/01/04/basic-form-of-life-and-death/">死活の基本形</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2019/12/31/new-years-eve/">おおみそか</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2019/12/27/bicycle-purchase/">自転車購入</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2019/12/25/year-end-todo/">年末年始の TODO</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2019/12/05/wrapping-up/">スッキリわかる Python 入門要約</a>
+              </li>
+            
+          
+        </ul>
+      </section>
+    
+  
+
+<section>
+    <h1>Books</h1>
+ <ul>
+<li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/4873117127/yamanetoshi-22/' target='_blank'><img src='/images/514ifs4Y5bL._SL160_.jpg' width='113' height='160' alt='コンピュータシステムの理論と実装 ―モダンなコンピュータの作り方' title='コンピュータシステムの理論と実装 ―モダンなコンピュータの作り方' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/4873116309/yamanetoshi-22/' target='_blank'><img src='/images/41SlY0zvpKL._SL160_.jpg' width='113' height='160' alt='Team Geek ―Googleのギークたちはいかにしてチームを作るのか' title='Team Geek ―Googleのギークたちはいかにしてチームを作るのか' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/4873114535/yamanetoshi-22/' target='_blank'><img src='/images/51NDW60LBQL._SL160_.jpg' width='125' height='160' alt='Prototyping Lab ―「作りながら考える」ためのArduino実践レシピ (Make:PROJECTS)' title='Prototyping Lab ―「作りながら考える」ためのArduino実践レシピ (Make:PROJECTS)' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/B0054RGYNQ/yamanetoshi-22/' target='_blank'><img src='/images/51F7PJ0KzYL._SL160_.jpg' width='124' height='160' alt='Fearless Change: Patterns for Introducing New Ideas' title='Fearless Change: Patterns for Introducing New Ideas' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/4774145211/yamanetoshi-22/' target='_blank'><img src='/images/515WitVr5lL._SL160_.jpg' width='112' height='160' alt='プロセッサを支える技術　　－－果てしなくスピードを追求する世界 (WEB+DB PRESS plus)' title='プロセッサを支える技術　　－－果てしなくスピードを追求する世界 (WEB+DB PRESS plus)' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/489471163X/yamanetoshi-22/' target='_blank'><img src='/images/51ZSMEJ9Y2L._SL160_.jpg' width='112' height='160' alt='計算機プログラムの構造と解釈' title='計算機プログラムの構造と解釈' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/4798023809/yamanetoshi-22/' target='_blank'><img src='/images/41R5gj5VRFL._SL160_.jpg' width='113' height='160' alt='入門Git' title='入門Git' /></a>
+</li>
+</ul>
+ </section>
+ <section>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+ <ins class="adsbygoogle"
+     style="display:inline-block;width:120px;height:600px"
+     data-ad-client="ca-pub-5885095939968393"
+     data-ad-slot="7922724663"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</section>
+  
+</aside>
+
+  </div>
+</div>
+
+    <footer role="contentinfo">
+      <p>Copyright &copy; 2020  - <a href="https://weblog.metacircular-evaluator.org/license/">License</a> -
+        <span class="credit">Powered by <a target="_blank" href="https://gohugo.io">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/">Hugo-Octopress</a> theme.
+      </p>
+    </footer>
+
+    
+    
+    
+
+    
+      <script>
+        var _gaq=[['_setAccount','UA-45385426-1'],['_trackPageview']];
+        (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+        g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(g,s)}(document,'script'));
+      </script>
+    
+  </body>
+</html>
+

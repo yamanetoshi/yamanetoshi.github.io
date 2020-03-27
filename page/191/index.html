@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+  
+    
+    
+      <link href="/css/fonts.css" rel="stylesheet" type="text/css">
+    
+  
+
+  
+  <title>/var/log/messages</title>
+
+  
+  
+  <link rel="stylesheet" href="/css/hugo-octopress.css">
+
+  
+  
+
+  
+    <link rel="stylesheet" href="/css/fork-awesome.min.css">
+  
+
+  
+  <link href="https://weblog.metacircular-evaluator.org/favicon.png" rel="icon">
+
+  
+  <link href="/index.xml" rel="alternate" type="application/rss+xml" title="/var/log/messages" />
+
+  <meta name="description" content="" />
+  <meta name="keywords" content="">
+  <meta name="author" content="">
+
+  
+  <meta name="generator" content="Hugo 0.67.0" />
+
+  
+  
+
+  
+  
+</head>
+<body>
+
+
+<header role="banner">
+<hgroup>
+  
+  <h1><a href="https://weblog.metacircular-evaluator.org/">/var/log/messages</a></h1>
+    <h2></h2>
+</hgroup></header>
+
+
+<nav role="navigation">
+<fieldset class="mobile-nav">
+  
+  <select onchange="location = this.value;">
+    <option value="">Navigate…</option>
+      
+  </select>
+</fieldset>
+
+
+<ul class="main-navigation">
+  
+  
+</ul>
+
+<ul class="subscription">
+  
+</ul>
+
+
+</nav>
+
+
+
+
+  
+
+<div id="main">
+  <div id="content">
+    <div class="blog-index">
+      
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Nov 21, 2013
+     - 2 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2013/11/21/ruby-re-install/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/ruby/">Ruby </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2013/11/21/ruby-re-install/">ruby 再導入の件</a>
+  </h1>
+</header>
+
+        
+          <p><p>昨晩色々ハマッてるログが残っているのですが大変だった模様。とりあえず</p>
+<ul>
+<li>sudo で Chef-Solo 云々するのに一般ユーザの $HOME に rbenv 入れてたorz</li>
+</ul>
+<p>という大失敗をしてて /usr/local 配下に再導入しようとしてハマッていた。sudo でパスが /etc/sudoers に記述されてるものに限定される、というあたりでまず駄目だったのですが、その後、rbenv install できない、という挙動が出てた記憶あり。</p>
+<p>ともあれ再度仮想リソースを kickoff して再開。</p>
+<h1 id="さくっと-running-になってくれないあたりが若干アレだったり">さくっと Running になってくれないあたりが若干アレだったり</h1></p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2013/11/21/ruby-re-install/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Nov 21, 2013
+     - 1 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2013/11/21/laziness/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/ruby/">Ruby </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2013/11/21/laziness/">もうすこし楽できんかな</a>
+  </h1>
+</header>
+
+        
+          <p><p>現状、ツールで云々できるのが以下。</p>
+<ul>
+<li>仮想リソースの起動 (名前を付ける必要があるが一意でなくても良い)</li>
+<li>仮想リソースの破棄 (破棄するリソースの ID が必要)</li>
+<li>既に取得している GIP について port forward なオブジェクトの割当てができる</li>
+<li>GIP に割当てられている port forward なオブジェクトの削除ができる</li>
+<li>仮想リソースの一覧が確認できる</li>
+<li>port forward なオブジェクトの一覧が確認できる</li>
+<li>GIP の一覧が確認できる</li>
+</ul>
+<p>どうしたものやら。</p></p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2013/11/21/laziness/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Nov 20, 2013
+     - 1 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2013/11/20/devopsokinawa-plan/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/devops/">DevOps </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2013/11/20/devopsokinawa-plan/">勉強会当日の運用の作戦</a>
+  </h1>
+</header>
+
+        
+          <p><p>とりあえずペアプロなセッションが三発。度毎にリセットしなければならないはず。スナップショットは取らない方向なので都度肝心なファイルは吸いあげて下さいね、誰となく。</p>
+<h1 id="て案内しないとマズいですね">て案内しないとマズいですね</h1>
+<p>とりあえずこちらマターの手順を検討しつつ上のような注意事項が事前発信できれば良いのかどうか。とりあえず事前準備としては以下か。</p>
+<ul>
+<li>GIP は手動で事前確保 (参加人数の 1/2 なのかどうか)</li>
+<li>確保したら ssh 接続用の public port を解放しておく (手動)</li>
+<li>必要数分仮想リソース確保して接続試験実施しておく</li>
+<li>メイルで鍵配布</li>
+</ul></p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2013/11/20/devopsokinawa-plan/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Nov 20, 2013
+     - 3 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2013/11/20/preparation-of-conference/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/devops/">DevOps </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2013/11/20/preparation-of-conference/">情報共有とか発信事項など</a>
+  </h1>
+</header>
+
+        
+          <p><p>ちょっと以下に纏めて GitHub 方面に反映の方向。</p>
+<p>つうか何を情報共有しなければならないのか、という件もアレ。以下に列挙してみる。</p>
+<ul>
+<li>すること、について</li>
+<li>用意しておいて欲しい環境</li>
+<li>セッションで使う環境について</li>
+<li>資料の URL など</li>
+</ul></p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2013/11/20/preparation-of-conference/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Nov 19, 2013
+     - 1 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2013/11/19/firewall-operation-by-fog/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/devops/">DevOps </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2013/11/19/firewall-operation-by-fog/">Fog で firewall 操作</a>
+  </h1>
+</header>
+
+        
+          <p><p>とりあえず IP address の確認から、っていきなり見当たらず焦るなど。以下なのか。</p>
+<ul>
+<li>Address
+<ul>
+<li>associateIpAddress</li>
+<li>listPublicIpAddress</li>
+<li>disassociateIpAddress</li>
+</ul>
+</li>
+</ul>
+<p>とは言え、今回は Fog から云々、ってのは想定してなくて、IP 確保しといて ID が分かってれば OK ですね。</p></p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2013/11/19/firewall-operation-by-fog/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Nov 19, 2013
+     - 1 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2013/11/19/fog/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/devops/">DevOps </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2013/11/19/fog/">Fog で勉強会用仮想リソースの面倒を見る件</a>
+  </h1>
+</header>
+
+        
+          <p><p>仮想リソースの kickoff および破棄と一覧表示は何とかなっているので、後は接続できるようにしないといけないのですがどうするか。</p>
+<p>例えば VM を kickoff するのが以下なんですが</p>
+<p>{% gist 7537625 %}</p>
+<p>認証に関する情報とか、仮想リソース deploy に関する情報はカレントディレクトリの access_key.rb に纏めて定義してあります。</p></p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2013/11/19/fog/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Nov 19, 2013
+     - 1 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2013/11/19/blogger-namecard/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/misc/">misc </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2013/11/19/blogger-namecard/">ブロガー名刺</a>
+  </h1>
+</header>
+
+        
+          <p>随分前 (エントリ見たら 2006 年!!) に始まった以下の企画。未だに続いてて本当にありがたく思っています。 -ブロガー名刺、送料込みで１０００円じゃす</p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2013/11/19/blogger-namecard/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Nov 19, 2013
+     - 1 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2013/11/19/weekend-cooking-reminder/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/misc/">misc </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2013/11/19/weekend-cooking-reminder/">備忘</a>
+  </h1>
+</header>
+
+        
+          <p>美味そげなギョーザのレシピを発見。 餃子（完全食）の作り方 週末はこれだな。午前中にタネを仕込んでおく方向。カワは 50 枚のヤツを買って小さめに作り</p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2013/11/19/weekend-cooking-reminder/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Nov 19, 2013
+     - 1 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2013/11/19/determination/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/android/">android </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2013/11/19/determination/">微妙なナニ</a>
+  </h1>
+</header>
+
+        
+          <p>チラ裏てき備忘メモです。 スマホなら回転させたくなくて、タブレットなら回転しても良い、という要求があり、以下なソレをでっちあげてみています。 Context</p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2013/11/19/determination/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Nov 18, 2013
+     - 1 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2013/11/18/search-chef-cookbook/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/devops/">DevOps </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2013/11/18/search-chef-cookbook/">cookbook 探すなど</a>
+  </h1>
+</header>
+
+        
+          <p><p>以下な要件?</p>
+<ul>
+<li>ユーザ追加必要なのか</li>
+<li>そのユーザはパスワードなしで sudo できること</li>
+<li>~/.ssh/authorized_keys 追加</li>
+</ul>
+<p>つうかこれらを盛り込んで rbenv を導入したソレを作成して関係方面に連絡入れることに。昔 CloudStack のテンプレ作ったことあるんだけれど、スデに忘却の彼方に去ってらっしゃいます。</p></p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2013/11/18/search-chef-cookbook/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      
+      
+
+
+
+
+
+
+<div class="pagination">
+
+    
+        
+        
+        
+        <a href="/" aria-label="First" class="label-pagination"><i class="fa fa-angle-double-left fa-lg"></i></a>
+    
+
+    
+    
+        <a href="/page/190/" aria-label="Previous" class="label-pagination"><i class="fa fa-angle-left fa-lg"> prev </i>
+    
+
+    
+    
+        <a href="/page/192/" aria-label="Next" class="label-pagination"> next <i class="fa fa-angle-right fa-lg"></i></a>
+    
+
+    
+    
+        <a href="/page/198/" aria-label="Last"><i class="fa fa-angle-double-right fa-lg"></i></a>
+    
+
+</div>
+
+  
+    </div>
+    
+
+<aside class="sidebar thirds">
+  <section class="first odd">
+
+    
+      <h1>About Me</h1>
+    
+
+    <p>
+      
+        <p><a href="https://about.me/yamanetoshi"><img src="/images/glider.png" alt="glider.png"/></a></p><p><strong>YAMANE Toshiaki</strong>(<a href="https://twitter.com/yamanetoshi">@yamanetoshi</a>)</p>
+      
+    </p>
+  </section>
+
+
+
+  
+  <ul class="sidebar-nav">
+    <li class="sidebar-nav-item">
+      <a target="_blank" href="https://github.com/yamanetoshi" title="https://github.com/yamanetoshi"><i class="fa fa-github fa-3x"></i></a>
+      
+      
+      <a target="_blank" href="https://twitter.com/yamanetoshi" title="https://twitter.com/yamanetoshi"><i class="fa fa-twitter fa-3x"></i></a>
+      
+         
+      
+      
+      
+      
+      
+      
+      <a target="_blank" href="https://www.instagram.com/yamanetoshi" title="https://www.instagram.com/yamanetoshi"><i class="fa fa-instagram fa-3x"></i></a>
+      
+
+    
+    
+    </li>
+  </ul>
+
+  
+
+  
+    
+      <section class="odd">
+        
+        
+      </section>
+    
+  
+
+  
+  
+  
+    
+      <section class="even">
+        <h1>Recent Posts</h1>
+        <ul id="recent_posts">
+          
+          
+            
+              <li class="post">
+                <a href="/blog/2020/03/27/hugo-transition/">hugo の移行</a>
+              </li>
+            
+          
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2020/02/10/go-pattern/">隅のカタチ</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2020/01/27/readable-code/">リーダブルコード</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2020/01/05/this-year/">今年</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2020/01/04/basic-form-of-life-and-death/">死活の基本形</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2019/12/31/new-years-eve/">おおみそか</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2019/12/27/bicycle-purchase/">自転車購入</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2019/12/25/year-end-todo/">年末年始の TODO</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2019/12/05/wrapping-up/">スッキリわかる Python 入門要約</a>
+              </li>
+            
+          
+        </ul>
+      </section>
+    
+  
+
+<section>
+    <h1>Books</h1>
+ <ul>
+<li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/4873117127/yamanetoshi-22/' target='_blank'><img src='/images/514ifs4Y5bL._SL160_.jpg' width='113' height='160' alt='コンピュータシステムの理論と実装 ―モダンなコンピュータの作り方' title='コンピュータシステムの理論と実装 ―モダンなコンピュータの作り方' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/4873116309/yamanetoshi-22/' target='_blank'><img src='/images/41SlY0zvpKL._SL160_.jpg' width='113' height='160' alt='Team Geek ―Googleのギークたちはいかにしてチームを作るのか' title='Team Geek ―Googleのギークたちはいかにしてチームを作るのか' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/4873114535/yamanetoshi-22/' target='_blank'><img src='/images/51NDW60LBQL._SL160_.jpg' width='125' height='160' alt='Prototyping Lab ―「作りながら考える」ためのArduino実践レシピ (Make:PROJECTS)' title='Prototyping Lab ―「作りながら考える」ためのArduino実践レシピ (Make:PROJECTS)' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/B0054RGYNQ/yamanetoshi-22/' target='_blank'><img src='/images/51F7PJ0KzYL._SL160_.jpg' width='124' height='160' alt='Fearless Change: Patterns for Introducing New Ideas' title='Fearless Change: Patterns for Introducing New Ideas' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/4774145211/yamanetoshi-22/' target='_blank'><img src='/images/515WitVr5lL._SL160_.jpg' width='112' height='160' alt='プロセッサを支える技術　　－－果てしなくスピードを追求する世界 (WEB+DB PRESS plus)' title='プロセッサを支える技術　　－－果てしなくスピードを追求する世界 (WEB+DB PRESS plus)' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/489471163X/yamanetoshi-22/' target='_blank'><img src='/images/51ZSMEJ9Y2L._SL160_.jpg' width='112' height='160' alt='計算機プログラムの構造と解釈' title='計算機プログラムの構造と解釈' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/4798023809/yamanetoshi-22/' target='_blank'><img src='/images/41R5gj5VRFL._SL160_.jpg' width='113' height='160' alt='入門Git' title='入門Git' /></a>
+</li>
+</ul>
+ </section>
+ <section>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+ <ins class="adsbygoogle"
+     style="display:inline-block;width:120px;height:600px"
+     data-ad-client="ca-pub-5885095939968393"
+     data-ad-slot="7922724663"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</section>
+  
+</aside>
+    
+  </div>
+</div>
+    <footer role="contentinfo">
+      <p>Copyright &copy; 2020  - <a href="https://weblog.metacircular-evaluator.org/license/">License</a> -
+        <span class="credit">Powered by <a target="_blank" href="https://gohugo.io">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/">Hugo-Octopress</a> theme.
+      </p>
+    </footer>
+
+    
+    
+    
+
+    
+      <script>
+        var _gaq=[['_setAccount','UA-45385426-1'],['_trackPageview']];
+        (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+        g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(g,s)}(document,'script'));
+      </script>
+    
+  </body>
+</html>
+   
+

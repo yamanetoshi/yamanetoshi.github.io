@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>cloudnative on /var/log/messages</title>
+    <link>https://weblog.metacircular-evaluator.org/categories/cloudnative/</link>
+    <description>Recent content in cloudnative on /var/log/messages</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Sun, 12 May 2019 13:10:45 +0900</lastBuildDate>
+    
+	<atom:link href="https://weblog.metacircular-evaluator.org/categories/cloudnative/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>GKE と Elixir な Cluster 検討</title>
+      <link>https://weblog.metacircular-evaluator.org/blog/2019/05/12/gke-elixir-cluster/</link>
+      <pubDate>Sun, 12 May 2019 13:10:45 +0900</pubDate>
+      
+      <guid>https://weblog.metacircular-evaluator.org/blog/2019/05/12/gke-elixir-cluster/</guid>
+      <description>&lt;p&gt;以前、libcluster で云々、って記事を見つけていたのですが、以下な書き込みを見つけたので機械翻訳してみつつ検討を。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://elixirforum.com/t/kubernetes-libcluster-help-gke/18946&#34;&gt;Kubernetes + libcluster&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;バッチな環境作って検証してみたくはあります。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>GKE のドキュメント</title>
+      <link>https://weblog.metacircular-evaluator.org/blog/2019/05/10/gke-document/</link>
+      <pubDate>Fri, 10 May 2019 23:11:09 +0900</pubDate>
+      
+      <guid>https://weblog.metacircular-evaluator.org/blog/2019/05/10/gke-document/</guid>
+      <description>&lt;p&gt;以下を確認しております。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://cloud.google.com/kubernetes-engine/docs/concepts/?hl=ja&#34;&gt;コンセプト&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;目次としては以下とのこと。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;基本コンセプト&lt;/li&gt;
+&lt;li&gt;クラスタ&lt;/li&gt;
+&lt;li&gt;GKE でのワークロード&lt;/li&gt;
+&lt;li&gt;セキュリティ&lt;/li&gt;
+&lt;li&gt;ネットワーキング&lt;/li&gt;
+&lt;li&gt;GKE 上のストレージ&lt;/li&gt;
+&lt;li&gt;GKE アドオン&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;メモを以下に追記の方向です。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>諸々確認の方向</title>
+      <link>https://weblog.metacircular-evaluator.org/blog/2019/05/09/gke-eks-rancher/</link>
+      <pubDate>Thu, 09 May 2019 20:09:54 +0900</pubDate>
+      
+      <guid>https://weblog.metacircular-evaluator.org/blog/2019/05/09/gke-eks-rancher/</guid>
+      <description>&lt;p&gt;なんとなくインターネッツな資料を漁っても微妙なものしか出てこない? みたいなので色々確認してみつつ、控えをと思っている次第です。あと、以下な記事を見てみるに&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://sleepless-se.net/2018/12/11/gke-kubernetes/&#34;&gt;GKEで最安値のKubernetesクラスタを作る方法&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.a-know.me/entry/2018/06/17/220222&#34;&gt;安価なGKE（k8s）クラスタを作って趣味開発に活用する&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;ちょっと自前で検証してみようかな、とか思ったりして。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>DKS?</title>
+      <link>https://weblog.metacircular-evaluator.org/blog/2019/05/08/dks/</link>
+      <pubDate>Wed, 08 May 2019 20:46:32 +0900</pubDate>
+      
+      <guid>https://weblog.metacircular-evaluator.org/blog/2019/05/08/dks/</guid>
+      <description>&lt;p&gt;rancherjp な slack にて以下なナニを確認。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://k8s.jp/2019/05/01/2019-04-30-docker-updates-focus-on-simplifying-life-for-developers/&#34;&gt;Docker、最新アップデートでDocker Kubernetes Service（DKS）をリリース〜開発者のコンテナ化を支援〜&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;別途確認の方向にて。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Rancher</title>
+      <link>https://weblog.metacircular-evaluator.org/blog/2019/05/07/parenthesis-nesting/</link>
+      <pubDate>Tue, 07 May 2019 22:07:04 +0900</pubDate>
+      
+      <guid>https://weblog.metacircular-evaluator.org/blog/2019/05/07/parenthesis-nesting/</guid>
+      <description>&lt;p&gt;今日は Cloud Native Okinawa でした。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://cnjp.connpass.com/event/126877/&#34;&gt;Cloud Native Okinawa #01&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;rancherjp&#34;&gt;rancherjp&lt;/h2&gt;
+&lt;p&gt;な slack に参加してみたりしています。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+  
+    
+    
+      <link href="/css/fonts.css" rel="stylesheet" type="text/css">
+    
+  
+
+  
+  <title>WebRTC 勉強会</title>
+
+  
+  
+  <link rel="stylesheet" href="/css/hugo-octopress.css">
+
+  
+  
+
+  
+    <link rel="stylesheet" href="/css/fork-awesome.min.css">
+  
+
+  
+  <link href="https://weblog.metacircular-evaluator.org/favicon.png" rel="icon">
+
+  
+  
+
+  <meta name="description" content="" />
+  <meta name="keywords" content="">
+  <meta name="author" content="">
+
+  
+  <meta name="generator" content="Hugo 0.67.0" />
+
+  
+  
+
+  
+  
+</head>
+<body>
+
+
+<header role="banner">
+<hgroup>
+  
+  <h1><a href="https://weblog.metacircular-evaluator.org/">/var/log/messages</a></h1>
+    <h2></h2>
+</hgroup></header>
+
+
+<nav role="navigation">
+<fieldset class="mobile-nav">
+  
+  <select onchange="location = this.value;">
+    <option value="">Navigate…</option>
+      
+  </select>
+</fieldset>
+
+
+<ul class="main-navigation">
+  
+  
+</ul>
+
+<ul class="subscription">
+  
+</ul>
+
+
+</nav>
+
+
+<div id="main">
+  <div id="content">
+    <div>
+      <article class="hentry" role="article">
+
+        
+        
+
+<header>
+  <p class="meta">Mar 27, 2016
+     - 3 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2016/03/27/webrtc-conference/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/android/">android </a>
+    
+  </p>
+  <h1 class="entry-title">
+     WebRTC 勉強会 
+  </h1>
+</header>
+
+
+        <div class="entry-content">
+          
+          
+          
+          <p>開場から開始まで若干のバッファがあったので諸々確認してみるなど。</p>
+<ul>
+<li>とりあえず <a href="http://nttcom.github.io/skyway/">SkyWay</a> Android なるソレを使うのかどうか</li>
+</ul>
+<p>とりあえず開発者登録を。</p>
+<p>そしてテーマ的には</p>
+<ul>
+<li>WebRTC を使った同時通信なナニ</li>
+</ul>
+<p>ということみたいです。あるいは</p>
+<ul>
+<li>垂直な切り口で云々できるエンジニアのニーズ</li>
+</ul>
+<p>が云々、という話も出ておりました。</p>
+<h2 id="入門編">入門編</h2>
+<p>大津谷さん、によるレクチャ。</p>
+<h3 id="webrtc-について">WebRTC について</h3>
+<ul>
+<li>
+<p>WebRTC Conference Japan という団体もある模様</p>
+</li>
+<li>
+<p>SkyWay というプロダクト</p>
+</li>
+<li>
+<p>WebRTC は広義の HTML5 の一つ</p>
+</li>
+<li>
+<p>Web RealTime Communication</p>
+</li>
+<li>
+<p>初めてのオープン標準</p>
+</li>
+<li>
+<p>WebRTC はオープン標準でライセンス使用料も無料</p>
+</li>
+<li>
+<p>中身はよっつ、IETF と W3C で標準化</p>
+</li>
+<li>
+<p>NAT 超えな P2P 通信手順も</p>
+</li>
+<li>
+<p>ブラウザとネイティブの両方で使えます</p>
+</li>
+<li>
+<p>低遅延で安全なデータ送信</p>
+</li>
+<li>
+<p>家電や IoT でも活用できる (Chromecast など)</p>
+</li>
+<li>
+<p>kindle fire に標準搭載</p>
+</li>
+<li>
+<p>HO とか FB メッセンジャーとか</p>
+</li>
+<li>
+<p>Chatowork, Skype なども使っている</p>
+</li>
+<li>
+<p>SkyWay Conference というビデオ会議ソリューションもある模様</p>
+</li>
+<li>
+<p>人形ロボの遠隔制御とかスマートグラス遠隔作業支援とか</p>
+</li>
+</ul>
+<h3 id="オンラインゲイムのしくみ">オンラインゲイムのしくみ</h3>
+<ul>
+<li>
+<p>オンラインゲイムにはデータの同期が必要</p>
+</li>
+<li>
+<p>きー入力同期 (こんとろーらの入力情報をネットにのせるイメージ)</p>
+</li>
+<li>
+<p>パラメータ同期 (操作の結果発生した何かを送る)</p>
+</li>
+<li>
+<p>プロトコルについて</p>
+</li>
+<li>
+<p>TCP と UDP の違い</p>
+</li>
+<li>
+<p>WebRTC over UDP なのね</p>
+</li>
+<li>
+<p>TCP ぽく、UDP ぽく、を切り替えて使えるみたい</p>
+</li>
+<li>
+<p>経路について</p>
+</li>
+<li>
+<p>C/S と P2P</p>
+</li>
+<li>
+<p>P2P てちーと対策必要なのか</p>
+</li>
+<li>
+<p>P2P の実現</p>
+</li>
+<li>
+<p>NAT の存在がネックらしい</p>
+</li>
+<li>
+<p>外から中にアクセスできない</p>
+</li>
+<li>
+<p>NAT 超え (三つの方法)</p>
+</li>
+<li>
+<p>NAT が無いときは P2P、NAT がある時は STUN/UDP ホールパンチング</p>
+</li>
+<li>
+<p>それでもだめなら TURN</p>
+</li>
+<li>
+<p>TURN はサーバ経由</p>
+</li>
+<li>
+<p>オンラインゲームの開発手法</p>
+</li>
+<li>
+<p>ライブラリを備えるプラットフォームは少数派らしい</p>
+</li>
+</ul>
+<h3 id="webrtc-とゲーム">WebRTC とゲーム</h3>
+<ul>
+<li>
+<p>どんな時に使うのか?</p>
+</li>
+<li>
+<p>おんらいんげーむ用通信ぷろとこる</p>
+</li>
+<li>
+<p>ボイス/ビデオチャット</p>
+</li>
+<li>
+<p>Banana Bread という FPS</p>
+</li>
+<li>
+<p>Cube Slam という PONG クローン</p>
+</li>
+<li>
+<p>ボイスチャットで使われるケイス</p>
+</li>
+<li>
+<p>イカデンワ</p>
+</li>
+<li>
+<p>使いステボイスチャット</p>
+</li>
+<li>
+<p>FF14 専用、というものもあるらしい</p>
+</li>
+<li>
+<p>以下のケイスで使える?</p>
+</li>
+<li>
+<p>通信遅延を小さく、サーバ費用を安く、超多人数に対応しなくて良い</p>
+</li>
+<li>
+<p>VR にはボイスチャット必要</p>
+</li>
+<li>
+<p>WebRTC には必要なものが実装済み</p>
+</li>
+<li>
+<p>深掘りすると大変らしい</p>
+</li>
+<li>
+<p>SDK と API ぎ いきょう</p>
+</li>
+<li>
+<p>従量課金</p>
+</li>
+<li>
+<p>tokbox, skyway, twilio</p>
+</li>
+<li>
+<p>twillio は最近 WebRTC のビデオ通話はじめたもよう</p>
+</li>
+<li>
+<p>skyway は無償利用できます</p>
+</li>
+</ul>
+<h3 id="まとめ">まとめ</h3>
+<ul>
+<li>SkyWay も思い出して!</li>
+<li>資料は別途公開の方向</li>
+</ul>
+<h2 id="ハンズオン">ハンズオン</h2>
+<p>最初にデモから。N コムのカトウさん担当。WebRTC を使ってロボの操作を行なうとのこと。ビデオチャットなシステムの紹介もあり。</p>
+<p>簡単なサンプルアプリの作成を行なうとのこと。ええと、以下を見つつ、とのこと</p>
+<ul>
+<li><a href="https://github.com/tsu-takahashi/webrtc-handson/wiki">ハンズオン資料</a></li>
+</ul>
+<p>そして、MBA が実機を認識しないという致命的なトラブルに見舞われている次第です。。。</p>
+<h2 id="動いた">動いた</h2>
+<p>とりあえず Kotlin とかで書き直してみたかったりします。つうか端末トラブル沢山でソース見れてない。これから見ます。</p>
+<h2 id="問題処理">問題処理?</h2>
+<p>以下実行して再起動したら認識してました。El Capitan アレだな。</p>
+<pre><code>$ defaults write NSGlobalDomain NSAppSleepDisabled -bool YES
+</code></pre>
+        </div>
+        
+
+<footer>
+  <p class="meta">
+    <span class="byline author vcard">Posted by <span class="fn"></span></span>
+    
+    <time>Mar 27, 2016</time>
+    
+    </span>
+  </p>
+
+  
+
+  <p class="meta">
+    
+        <a class="basic-alignment left" href="https://weblog.metacircular-evaluator.org/blog/2016/03/26/news-of-a-death/" title="小山田いくさんの訃報">小山田いくさんの訃報</a>
+    
+
+    
+      <a class="basic-alignment right" href="https://weblog.metacircular-evaluator.org/blog/2016/03/28/webrtc-in-iot/" title="IoT で WebRTC てのはアリなのかどうか">IoT で WebRTC てのはアリなのかどうか</a>
+    
+  </p>
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle"
+         style="display:inline-block;width:728px;height:90px"
+         data-ad-client="ca-pub-5885095939968393"
+         data-ad-slot="3213323462"></ins>
+  <script>
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+ </script>
+
+  
+    
+      <div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function() {
+      
+      
+      
+      if (window.location.hostname == "localhost")
+          return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'yamanetoshi';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    
+  
+</footer>
+
+      </article>
+    </div>
+    
+
+<aside class="sidebar thirds">
+  <section class="first odd">
+
+    
+      <h1>About Me</h1>
+    
+
+    <p>
+      
+        <p><a href="https://about.me/yamanetoshi"><img src="/images/glider.png" alt="glider.png"/></a></p><p><strong>YAMANE Toshiaki</strong>(<a href="https://twitter.com/yamanetoshi">@yamanetoshi</a>)</p>
+      
+    </p>
+  </section>
+
+
+
+  
+  <ul class="sidebar-nav">
+    <li class="sidebar-nav-item">
+      <a target="_blank" href="https://github.com/yamanetoshi" title="https://github.com/yamanetoshi"><i class="fa fa-github fa-3x"></i></a>
+      
+      
+      <a target="_blank" href="https://twitter.com/yamanetoshi" title="https://twitter.com/yamanetoshi"><i class="fa fa-twitter fa-3x"></i></a>
+      
+         
+      
+      
+      
+      
+      
+      
+      <a target="_blank" href="https://www.instagram.com/yamanetoshi" title="https://www.instagram.com/yamanetoshi"><i class="fa fa-instagram fa-3x"></i></a>
+      
+
+    
+    
+    </li>
+  </ul>
+
+  
+
+  
+    
+      <section class="odd">
+        
+        
+      </section>
+    
+  
+
+  
+  
+  
+    
+      <section class="even">
+        <h1>Recent Posts</h1>
+        <ul id="recent_posts">
+          
+          
+            
+              <li class="post">
+                <a href="/blog/2020/03/27/hugo-transition/">hugo の移行</a>
+              </li>
+            
+          
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2020/02/10/go-pattern/">隅のカタチ</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2020/01/27/readable-code/">リーダブルコード</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2020/01/05/this-year/">今年</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2020/01/04/basic-form-of-life-and-death/">死活の基本形</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2019/12/31/new-years-eve/">おおみそか</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2019/12/27/bicycle-purchase/">自転車購入</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2019/12/25/year-end-todo/">年末年始の TODO</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2019/12/05/wrapping-up/">スッキリわかる Python 入門要約</a>
+              </li>
+            
+          
+        </ul>
+      </section>
+    
+  
+
+<section>
+    <h1>Books</h1>
+ <ul>
+<li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/4873117127/yamanetoshi-22/' target='_blank'><img src='/images/514ifs4Y5bL._SL160_.jpg' width='113' height='160' alt='コンピュータシステムの理論と実装 ―モダンなコンピュータの作り方' title='コンピュータシステムの理論と実装 ―モダンなコンピュータの作り方' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/4873116309/yamanetoshi-22/' target='_blank'><img src='/images/41SlY0zvpKL._SL160_.jpg' width='113' height='160' alt='Team Geek ―Googleのギークたちはいかにしてチームを作るのか' title='Team Geek ―Googleのギークたちはいかにしてチームを作るのか' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/4873114535/yamanetoshi-22/' target='_blank'><img src='/images/51NDW60LBQL._SL160_.jpg' width='125' height='160' alt='Prototyping Lab ―「作りながら考える」ためのArduino実践レシピ (Make:PROJECTS)' title='Prototyping Lab ―「作りながら考える」ためのArduino実践レシピ (Make:PROJECTS)' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/B0054RGYNQ/yamanetoshi-22/' target='_blank'><img src='/images/51F7PJ0KzYL._SL160_.jpg' width='124' height='160' alt='Fearless Change: Patterns for Introducing New Ideas' title='Fearless Change: Patterns for Introducing New Ideas' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/4774145211/yamanetoshi-22/' target='_blank'><img src='/images/515WitVr5lL._SL160_.jpg' width='112' height='160' alt='プロセッサを支える技術　　－－果てしなくスピードを追求する世界 (WEB+DB PRESS plus)' title='プロセッサを支える技術　　－－果てしなくスピードを追求する世界 (WEB+DB PRESS plus)' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/489471163X/yamanetoshi-22/' target='_blank'><img src='/images/51ZSMEJ9Y2L._SL160_.jpg' width='112' height='160' alt='計算機プログラムの構造と解釈' title='計算機プログラムの構造と解釈' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/4798023809/yamanetoshi-22/' target='_blank'><img src='/images/41R5gj5VRFL._SL160_.jpg' width='113' height='160' alt='入門Git' title='入門Git' /></a>
+</li>
+</ul>
+ </section>
+ <section>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+ <ins class="adsbygoogle"
+     style="display:inline-block;width:120px;height:600px"
+     data-ad-client="ca-pub-5885095939968393"
+     data-ad-slot="7922724663"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</section>
+  
+</aside>
+
+  </div>
+</div>
+
+    <footer role="contentinfo">
+      <p>Copyright &copy; 2020  - <a href="https://weblog.metacircular-evaluator.org/license/">License</a> -
+        <span class="credit">Powered by <a target="_blank" href="https://gohugo.io">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/">Hugo-Octopress</a> theme.
+      </p>
+    </footer>
+
+    
+    
+    
+
+    
+      <script>
+        var _gaq=[['_setAccount','UA-45385426-1'],['_trackPageview']];
+        (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+        g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(g,s)}(document,'script'));
+      </script>
+    
+  </body>
+</html>
+

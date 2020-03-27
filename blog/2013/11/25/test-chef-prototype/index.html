@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+  
+    
+    
+      <link href="/css/fonts.css" rel="stylesheet" type="text/css">
+    
+  
+
+  
+  <title>GitHub に登録したプロトタイプを使ってみる</title>
+
+  
+  
+  <link rel="stylesheet" href="/css/hugo-octopress.css">
+
+  
+  
+
+  
+    <link rel="stylesheet" href="/css/fork-awesome.min.css">
+  
+
+  
+  <link href="https://weblog.metacircular-evaluator.org/favicon.png" rel="icon">
+
+  
+  
+
+  <meta name="description" content="" />
+  <meta name="keywords" content="">
+  <meta name="author" content="">
+
+  
+  <meta name="generator" content="Hugo 0.67.0" />
+
+  
+  
+
+  
+  
+</head>
+<body>
+
+
+<header role="banner">
+<hgroup>
+  
+  <h1><a href="https://weblog.metacircular-evaluator.org/">/var/log/messages</a></h1>
+    <h2></h2>
+</hgroup></header>
+
+
+<nav role="navigation">
+<fieldset class="mobile-nav">
+  
+  <select onchange="location = this.value;">
+    <option value="">Navigate…</option>
+      
+  </select>
+</fieldset>
+
+
+<ul class="main-navigation">
+  
+  
+</ul>
+
+<ul class="subscription">
+  
+</ul>
+
+
+</nav>
+
+
+<div id="main">
+  <div id="content">
+    <div>
+      <article class="hentry" role="article">
+
+        
+        
+
+<header>
+  <p class="meta">Nov 25, 2013
+     - 2 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2013/11/25/test-chef-prototype/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/devops/">DevOps </a>
+    
+  </p>
+  <h1 class="entry-title">
+     GitHub に登録したプロトタイプを使ってみる 
+  </h1>
+</header>
+
+
+        <div class="entry-content">
+          
+          
+          
+          <p>とりあえず手元の Mavericks な MBA では無理なので某仮想リソースで。起動できたら clone します。</p>
+<pre><code>$ git clone https://github.com/yamanetoshi/knife-solo-prototype.git
+</code></pre>
+<p>で、~/.ssh/config を以下にしておいて</p>
+<pre><code>Host melody
+  HostName 10.1.3.5
+  User devops
+  identityfile ~/.ssh/devopsOkinawa.key
+</code></pre>
+<p>Hostname は適宜読み換えてください。あと、鍵もコピィ必要。これで ssh devops@melody で接続できれば準備は OK です。</p>
+<p>で、bundle install なんですが、某所の仮想リソースは bundler が入ってなくて</p>
+<pre><code>$ sudo gem i bundler
+$ sudo rebenv rehash
+</code></pre>
+<p>という手続き必要。あと、この時点で chef-repo ディレクトリを git 管理にしておくと良いかもしれません。</p>
+<p>あと、bundle install は &ndash;path 付けること。後天性記憶不全でつい忘れてしまいますorz</p>
+<pre><code>$ bundle install --path vendor/bundle
+</code></pre>
+<p>で、chef-repo の中で git init して git status したら以下なカンジでした。</p>
+<pre><code>$ git status
+# On branch master
+#
+# Initial commit
+#
+# Untracked files:
+#   (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
+#
+#       .chef/
+#       .gitignore
+#       Berksfile
+#       data_bags/
+#       environments/
+#       nodes/
+#       roles/
+#       site-cookbooks/
+</code></pre>
+<p>とりあえず initial commit な commit を作っておいて knife solo prepare をば。</p>
+<pre><code>$ bundle exec knife solo prepare melody
+</code></pre>
+<p>リモホに Chef が導入されて nodes/melody.json が作成されてます。ので以下。</p>
+<pre><code>$ git add nodes/melody.json
+$ git commit -m 'Add node json file'
+</code></pre>
+<h2 id="クックブック作成">クックブック作成</h2>
+<p>ええと、以下なのか。nginx で云々、ってことで。クックブック新規作成。</p>
+<pre><code>$ knife cookbook create nginx -o site-cookbooks
+</code></pre>
+<p>で、site-cookbooks/nginx/recipes/default.rb を編集。Chef 本によると以下を、とのこと。</p>
+<pre><code>package &quot;nginx&quot; do 
+  action :install
+end
+service &quot;nginx&quot; do
+  supports :status =&gt; true, :restart =&gt; true, :reload =&gt; true 
+  action [ :enable , :start ]
+end
+template &quot;nginx.conf&quot; do
+  path &quot;/etc/nginx/nginx.conf&quot; source &quot;nginx.conf.erb&quot;
+  owner &quot;root&quot;
+  group &quot;root&quot;
+  mode 0644
+  notifies :reload , 'service[nginx]'
+end
+</code></pre>
+<p>詳細略。で、テンプレを site-cookbooks/nginx/templates/default/nginx.conf.erb に投入とのこと</p>
+<pre><code>user nginx;
+worker_processes 1;
+error_log /var/log/nginx/error.log; 
+pid /var/run/nginx.pid;
+events {
+  worker_connections 1024;
+}
+http {
+  include /etc/nginx/mime.types; 
+  default_type application/octet -stream;
+server {
+  listen &lt;%= node['nginx']['port'] %&gt;; 
+  server_name localhost;
+  location / {
+    root /usr/share/nginx/html;
+    index index.html index.htm;
+  }
+}
+</code></pre>
+<p>で、chef-repo/nodes/melody.json を以下にするのか。</p>
+<pre><code>{
+  &quot;nginx&quot;: {
+    &quot;port&quot; : 80 
+  },
+  &quot;run_list&quot;: [ 
+    &quot;nginx&quot;
+  ] 
+}
+</code></pre>
+<p>で、以下なのか。</p>
+<pre><code>$ bundle exec knife solo cook melody
+</code></pre>
+<p>ちなみにカレントディレクトリは chef-repo の中でないと駄目らしい。</p>
+<h2 id="結果">結果</h2>
+<p>Chef はエラーを吐いてたのですがリモホでは正常稼動してます。とりあえず流れ的にはこんなもん、ってことで微妙ですがばたばた気味なのでエントリ投入。</p>
+        </div>
+        
+
+<footer>
+  <p class="meta">
+    <span class="byline author vcard">Posted by <span class="fn"></span></span>
+    
+    <time>Nov 25, 2013</time>
+    
+    </span>
+  </p>
+
+  
+
+  <p class="meta">
+    
+        <a class="basic-alignment left" href="https://weblog.metacircular-evaluator.org/blog/2013/11/25/reminder-todo/" title="TODO 控え">TODO 控え</a>
+    
+
+    
+      <a class="basic-alignment right" href="https://weblog.metacircular-evaluator.org/blog/2013/11/25/eopl-ex-2-23/" title="EoPL の Exercise 2.23">EoPL の Exercise 2.23</a>
+    
+  </p>
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle"
+         style="display:inline-block;width:728px;height:90px"
+         data-ad-client="ca-pub-5885095939968393"
+         data-ad-slot="3213323462"></ins>
+  <script>
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+ </script>
+
+  
+    
+      <div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function() {
+      
+      
+      
+      if (window.location.hostname == "localhost")
+          return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'yamanetoshi';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    
+  
+</footer>
+
+      </article>
+    </div>
+    
+
+<aside class="sidebar thirds">
+  <section class="first odd">
+
+    
+      <h1>About Me</h1>
+    
+
+    <p>
+      
+        <p><a href="https://about.me/yamanetoshi"><img src="/images/glider.png" alt="glider.png"/></a></p><p><strong>YAMANE Toshiaki</strong>(<a href="https://twitter.com/yamanetoshi">@yamanetoshi</a>)</p>
+      
+    </p>
+  </section>
+
+
+
+  
+  <ul class="sidebar-nav">
+    <li class="sidebar-nav-item">
+      <a target="_blank" href="https://github.com/yamanetoshi" title="https://github.com/yamanetoshi"><i class="fa fa-github fa-3x"></i></a>
+      
+      
+      <a target="_blank" href="https://twitter.com/yamanetoshi" title="https://twitter.com/yamanetoshi"><i class="fa fa-twitter fa-3x"></i></a>
+      
+         
+      
+      
+      
+      
+      
+      
+      <a target="_blank" href="https://www.instagram.com/yamanetoshi" title="https://www.instagram.com/yamanetoshi"><i class="fa fa-instagram fa-3x"></i></a>
+      
+
+    
+    
+    </li>
+  </ul>
+
+  
+
+  
+    
+      <section class="odd">
+        
+        
+      </section>
+    
+  
+
+  
+  
+  
+    
+      <section class="even">
+        <h1>Recent Posts</h1>
+        <ul id="recent_posts">
+          
+          
+            
+              <li class="post">
+                <a href="/blog/2020/03/27/hugo-transition/">hugo の移行</a>
+              </li>
+            
+          
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2020/02/10/go-pattern/">隅のカタチ</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2020/01/27/readable-code/">リーダブルコード</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2020/01/05/this-year/">今年</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2020/01/04/basic-form-of-life-and-death/">死活の基本形</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2019/12/31/new-years-eve/">おおみそか</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2019/12/27/bicycle-purchase/">自転車購入</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2019/12/25/year-end-todo/">年末年始の TODO</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2019/12/05/wrapping-up/">スッキリわかる Python 入門要約</a>
+              </li>
+            
+          
+        </ul>
+      </section>
+    
+  
+
+<section>
+    <h1>Books</h1>
+ <ul>
+<li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/4873117127/yamanetoshi-22/' target='_blank'><img src='/images/514ifs4Y5bL._SL160_.jpg' width='113' height='160' alt='コンピュータシステムの理論と実装 ―モダンなコンピュータの作り方' title='コンピュータシステムの理論と実装 ―モダンなコンピュータの作り方' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/4873116309/yamanetoshi-22/' target='_blank'><img src='/images/41SlY0zvpKL._SL160_.jpg' width='113' height='160' alt='Team Geek ―Googleのギークたちはいかにしてチームを作るのか' title='Team Geek ―Googleのギークたちはいかにしてチームを作るのか' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/4873114535/yamanetoshi-22/' target='_blank'><img src='/images/51NDW60LBQL._SL160_.jpg' width='125' height='160' alt='Prototyping Lab ―「作りながら考える」ためのArduino実践レシピ (Make:PROJECTS)' title='Prototyping Lab ―「作りながら考える」ためのArduino実践レシピ (Make:PROJECTS)' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/B0054RGYNQ/yamanetoshi-22/' target='_blank'><img src='/images/51F7PJ0KzYL._SL160_.jpg' width='124' height='160' alt='Fearless Change: Patterns for Introducing New Ideas' title='Fearless Change: Patterns for Introducing New Ideas' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/4774145211/yamanetoshi-22/' target='_blank'><img src='/images/515WitVr5lL._SL160_.jpg' width='112' height='160' alt='プロセッサを支える技術　　－－果てしなくスピードを追求する世界 (WEB+DB PRESS plus)' title='プロセッサを支える技術　　－－果てしなくスピードを追求する世界 (WEB+DB PRESS plus)' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/489471163X/yamanetoshi-22/' target='_blank'><img src='/images/51ZSMEJ9Y2L._SL160_.jpg' width='112' height='160' alt='計算機プログラムの構造と解釈' title='計算機プログラムの構造と解釈' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/4798023809/yamanetoshi-22/' target='_blank'><img src='/images/41R5gj5VRFL._SL160_.jpg' width='113' height='160' alt='入門Git' title='入門Git' /></a>
+</li>
+</ul>
+ </section>
+ <section>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+ <ins class="adsbygoogle"
+     style="display:inline-block;width:120px;height:600px"
+     data-ad-client="ca-pub-5885095939968393"
+     data-ad-slot="7922724663"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</section>
+  
+</aside>
+
+  </div>
+</div>
+
+    <footer role="contentinfo">
+      <p>Copyright &copy; 2020  - <a href="https://weblog.metacircular-evaluator.org/license/">License</a> -
+        <span class="credit">Powered by <a target="_blank" href="https://gohugo.io">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/">Hugo-Octopress</a> theme.
+      </p>
+    </footer>
+
+    
+    
+    
+
+    
+      <script>
+        var _gaq=[['_setAccount','UA-45385426-1'],['_trackPageview']];
+        (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+        g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(g,s)}(document,'script'));
+      </script>
+    
+  </body>
+</html>
+

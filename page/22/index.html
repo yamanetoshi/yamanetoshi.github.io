@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+  
+    
+    
+      <link href="/css/fonts.css" rel="stylesheet" type="text/css">
+    
+  
+
+  
+  <title>/var/log/messages</title>
+
+  
+  
+  <link rel="stylesheet" href="/css/hugo-octopress.css">
+
+  
+  
+
+  
+    <link rel="stylesheet" href="/css/fork-awesome.min.css">
+  
+
+  
+  <link href="https://weblog.metacircular-evaluator.org/favicon.png" rel="icon">
+
+  
+  <link href="/index.xml" rel="alternate" type="application/rss+xml" title="/var/log/messages" />
+
+  <meta name="description" content="" />
+  <meta name="keywords" content="">
+  <meta name="author" content="">
+
+  
+  <meta name="generator" content="Hugo 0.67.0" />
+
+  
+  
+
+  
+  
+</head>
+<body>
+
+
+<header role="banner">
+<hgroup>
+  
+  <h1><a href="https://weblog.metacircular-evaluator.org/">/var/log/messages</a></h1>
+    <h2></h2>
+</hgroup></header>
+
+
+<nav role="navigation">
+<fieldset class="mobile-nav">
+  
+  <select onchange="location = this.value;">
+    <option value="">Navigate…</option>
+      
+  </select>
+</fieldset>
+
+
+<ul class="main-navigation">
+  
+  
+</ul>
+
+<ul class="subscription">
+  
+</ul>
+
+
+</nav>
+
+
+
+
+  
+
+<div id="main">
+  <div id="content">
+    <div class="blog-index">
+      
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Feb 20, 2019
+     - 3 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2019/02/20/metaprogramming-elixir/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/programming/">programming </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2019/02/20/metaprogramming-elixir/">Metaprogramming Elixir (9)</a>
+  </h1>
+</header>
+
+        
+          <p><h2 id="final-step">Final Step</h2>
+<p>Identify Areas for Compile-Time Optimizations とのこと。ぐぐる翻訳によれば</p>
+<blockquote>
+<p>実行時に評価される正規表現を生成できますが、コンパイル時の最適化を適用しましょう。 値を補間する場合にのみ文字列連結を実行する必要がある関数定義を生成できます。 これにより、実行時にパフォーマンスが大幅に向上します。 interpolate を定義して実装を完成させましょう。その仕事は、必要に応じて補間を使用して t/3 関数本体のASTを返すことです。</p>
+</blockquote>
+<p>とのこと。以下な実装が例示されています。</p></p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2019/02/20/metaprogramming-elixir/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Feb 19, 2019
+     - 1 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2019/02/19/metaprogramming-elixir/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/programming/">programming </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2019/02/19/metaprogramming-elixir/">Metaprogramming Elixir (8)</a>
+  </h1>
+</header>
+
+        
+          <p><p>Macro.to_string で生成されたコードを理解、という小休憩てきな節。Translator module に以下な修正を、とのこと。</p>
+<pre><code>  def compile(translations) do
+    translations_ast = for {locale, mappings} &lt;- translations do
+      deftranslations(locale, &quot;&quot;, mappings)
+    end
+
+    final_ast = quote do
+      def t(locale, path, binding \\ [])
+      unquote(translations-ast)
+      def t(_locale, _path, _bindings), do: {:error, :no_translation}
+    end
+
+    IO.puts Macro.to_string(final_ast)
+    final_ast
+  end
+</code></pre></p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2019/02/19/metaprogramming-elixir/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Feb 18, 2019
+     - 4 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2019/02/18/metaprogramming-elixir/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/programming/">programming </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2019/02/18/metaprogramming-elixir/">Metaprogramming Elixir (7)</a>
+  </h1>
+</header>
+
+        
+          <p><p>Advanced Compile-Time Code Generation の Chapter 3 です。最初に出てくるのは UnicodeData.txt を例にした外部データがコード生成手続きを呼び出す例。</p>
+<p>一つには以下な情報 (一部のみ) を行単位で読みこんで</p>
+<pre><code>application/javascript  .js
+application/json        .json
+image/jpeg              .jpeg, .jpg
+video/jpeg              .jpgv
+</code></pre><p>リストにしてそれに手続きを割り当てる、という事をしてます。これはこれで便利。そしてこのテキストファイルを更新した時点でコンパイルも動かしてしまえ、という属性があるとのこと。これは凄い。</p></p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2019/02/18/metaprogramming-elixir/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Feb 17, 2019
+     - 3 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2019/02/17/metaprogramming-elixir/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/programming/">programming </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2019/02/17/metaprogramming-elixir/">Metaprogramming Elixir (6)</a>
+  </h1>
+</header>
+
+        
+          <p><p>ちょっと復習。<code>accumulate:true</code> な記述のあたりを列挙しておきます。</p>
+<ul>
+<li>モジュール属性を使用すると、コンパイル時にデータをモジュールに格納できる</li>
+<li>これらは他の言語で定数が適用される場所でよく使われるが、Elixirはコンパイル時に悪用するための他のトリックを提供する</li>
+<li>属性を登録するときにaccumulate：trueオプションを利用することで、コンパイル段階で登録された追加リストを保持できる</li>
+<li>モジュールがコンパイルされた後、属性にはコンパイル中に発生したすべての登録のリストが含まれる</li>
+</ul>
+<p>accumulate:true が今ひとつ理解できていないのかどうか。てか、翻訳時に評価された値が属性に値として格納される、ってことなのか。そしてここで問題になってくるのが評価される順番なのね。</p></p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2019/02/17/metaprogramming-elixir/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Feb 16, 2019
+     - 3 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2019/02/16/metaprogramming-elixir/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/programming/">programming </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2019/02/16/metaprogramming-elixir/">Metaprogramming Elixir (5)</a>
+  </h1>
+</header>
+
+        
+          <p><p>コードの生成に module attributes を使う、とのこと。翻訳時にモジュールに格納されてるデータにアクセスできる、なのかどうか。</p>
+<pre><code>accumulate:true
+</code></pre><p>というオプションが attribute を登録する時に云々、とあります。</p>
+<h2 id="test-macro">test macro</h2>
+<p>二つの argument を受け取る、とのこと。</p>
+<ul>
+<li>string description (キーワードリスト?)</li>
+<li>do/end なコードブロック</li>
+</ul></p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2019/02/16/metaprogramming-elixir/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Feb 15, 2019
+     - 2 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2019/02/15/metaprogramming-elixir/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/programming/">programming </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2019/02/15/metaprogramming-elixir/">Metaprogramming Elixir (4)</a>
+  </h1>
+</header>
+
+        
+          <p><p>ゴールは他のモジュールを test macro で拡張すること、らしい。以下な testing framework を、との事です。</p>
+<pre><code>defmodule MathTest do
+  use Assertion
+
+  test &quot;integers can be added and subtracted&quot; do
+    assert 1 + 1 == 2
+    assert 2 + 3 == 5
+    assert 5 - 5 == 10
+  end
+
+  test &quot;integers can be multiplied and divided&quot; do
+    assert 5 * 5 == 25
+    assert 10 / 2 == 5
+  end
+end
+</code></pre><p>実行例が以下らしい。</p>
+<pre><code>iex&gt; MathTest.run
+..
+===========================
+FAILURE: integers can be added and subtracted
+===========================
+   Expected:       0
+   to be equal to: 10
+..:ok
+</code></pre></p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2019/02/15/metaprogramming-elixir/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Feb 14, 2019
+     - 1 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2019/02/14/elixiroshima/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/programming/">programming </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2019/02/14/elixiroshima/">広島のElixirコミュニティ、その名もElixiroshima</a>
+  </h1>
+</header>
+
+        
+          <p><p>広島でも勉強会が kickoff される模様。</p>
+<ul>
+<li><a href="https://elixiroshima.connpass.com/event/119543/">Elixiroshima 第1回ミートアップ — Elixir、始めてみようや。広島での。</a></li>
+</ul>
+<p>行きたひ。</p></p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2019/02/14/elixiroshima/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Feb 13, 2019
+     - 1 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2019/02/13/fukuokaex/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/programming/">programming </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2019/02/13/fukuokaex/">fukuoka.ex#19</a>
+  </h1>
+</header>
+
+        
+          <p><p>リモート視聴枠が増員になったので速攻でぽちりました。</p>
+<ul>
+<li><a href="https://fukuokaex.connpass.com/event/120102/">【好評につき増枠しました】fukuoka.ex#19：Elixir実践テクニック公開します③</a></li>
+</ul>
+<h2 id="その後">その後</h2>
+<p>compass メンテでアクセスできなくなってて焦りましたが登録はできてた模様。</p></p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2019/02/13/fukuokaex/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Feb 12, 2019
+     - 3 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2019/02/12/metaprogramming-elixir/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/programming/">programming </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2019/02/12/metaprogramming-elixir/">Metaprogramming Elixir (3)</a>
+  </h1>
+</header>
+
+        
+          <p><p>Chapter 2 に突入。とりあえず if な特殊形式な macro を作る模様。</p></p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2019/02/12/metaprogramming-elixir/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Feb 11, 2019
+     - 2 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2019/02/11/metaprogramming-elixir/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/programming/">programming </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2019/02/11/metaprogramming-elixir/">Metaprogramming Elixir (2)</a>
+  </h1>
+</header>
+
+        
+          <p><p>マクロは caller のためのコードを生成するのではなく注入 (inject) する、とあります。コンテキストに注入、という表現になっていますね。コンテキストとは caller の</p>
+<ul>
+<li>bindings</li>
+<li>imports</li>
+<li>aliases</li>
+</ul>
+<p>とあります。</p></p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2019/02/11/metaprogramming-elixir/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      
+      
+
+
+
+
+
+
+<div class="pagination">
+
+    
+        
+        
+        
+        <a href="/" aria-label="First" class="label-pagination"><i class="fa fa-angle-double-left fa-lg"></i></a>
+    
+
+    
+    
+        <a href="/page/21/" aria-label="Previous" class="label-pagination"><i class="fa fa-angle-left fa-lg"> prev </i>
+    
+
+    
+    
+        <a href="/page/23/" aria-label="Next" class="label-pagination"> next <i class="fa fa-angle-right fa-lg"></i></a>
+    
+
+    
+    
+        <a href="/page/198/" aria-label="Last"><i class="fa fa-angle-double-right fa-lg"></i></a>
+    
+
+</div>
+
+  
+    </div>
+    
+
+<aside class="sidebar thirds">
+  <section class="first odd">
+
+    
+      <h1>About Me</h1>
+    
+
+    <p>
+      
+        <p><a href="https://about.me/yamanetoshi"><img src="/images/glider.png" alt="glider.png"/></a></p><p><strong>YAMANE Toshiaki</strong>(<a href="https://twitter.com/yamanetoshi">@yamanetoshi</a>)</p>
+      
+    </p>
+  </section>
+
+
+
+  
+  <ul class="sidebar-nav">
+    <li class="sidebar-nav-item">
+      <a target="_blank" href="https://github.com/yamanetoshi" title="https://github.com/yamanetoshi"><i class="fa fa-github fa-3x"></i></a>
+      
+      
+      <a target="_blank" href="https://twitter.com/yamanetoshi" title="https://twitter.com/yamanetoshi"><i class="fa fa-twitter fa-3x"></i></a>
+      
+         
+      
+      
+      
+      
+      
+      
+      <a target="_blank" href="https://www.instagram.com/yamanetoshi" title="https://www.instagram.com/yamanetoshi"><i class="fa fa-instagram fa-3x"></i></a>
+      
+
+    
+    
+    </li>
+  </ul>
+
+  
+
+  
+    
+      <section class="odd">
+        
+        
+      </section>
+    
+  
+
+  
+  
+  
+    
+      <section class="even">
+        <h1>Recent Posts</h1>
+        <ul id="recent_posts">
+          
+          
+            
+              <li class="post">
+                <a href="/blog/2020/03/27/hugo-transition/">hugo の移行</a>
+              </li>
+            
+          
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2020/02/10/go-pattern/">隅のカタチ</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2020/01/27/readable-code/">リーダブルコード</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2020/01/05/this-year/">今年</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2020/01/04/basic-form-of-life-and-death/">死活の基本形</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2019/12/31/new-years-eve/">おおみそか</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2019/12/27/bicycle-purchase/">自転車購入</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2019/12/25/year-end-todo/">年末年始の TODO</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2019/12/05/wrapping-up/">スッキリわかる Python 入門要約</a>
+              </li>
+            
+          
+        </ul>
+      </section>
+    
+  
+
+<section>
+    <h1>Books</h1>
+ <ul>
+<li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/4873117127/yamanetoshi-22/' target='_blank'><img src='/images/514ifs4Y5bL._SL160_.jpg' width='113' height='160' alt='コンピュータシステムの理論と実装 ―モダンなコンピュータの作り方' title='コンピュータシステムの理論と実装 ―モダンなコンピュータの作り方' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/4873116309/yamanetoshi-22/' target='_blank'><img src='/images/41SlY0zvpKL._SL160_.jpg' width='113' height='160' alt='Team Geek ―Googleのギークたちはいかにしてチームを作るのか' title='Team Geek ―Googleのギークたちはいかにしてチームを作るのか' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/4873114535/yamanetoshi-22/' target='_blank'><img src='/images/51NDW60LBQL._SL160_.jpg' width='125' height='160' alt='Prototyping Lab ―「作りながら考える」ためのArduino実践レシピ (Make:PROJECTS)' title='Prototyping Lab ―「作りながら考える」ためのArduino実践レシピ (Make:PROJECTS)' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/B0054RGYNQ/yamanetoshi-22/' target='_blank'><img src='/images/51F7PJ0KzYL._SL160_.jpg' width='124' height='160' alt='Fearless Change: Patterns for Introducing New Ideas' title='Fearless Change: Patterns for Introducing New Ideas' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/4774145211/yamanetoshi-22/' target='_blank'><img src='/images/515WitVr5lL._SL160_.jpg' width='112' height='160' alt='プロセッサを支える技術　　－－果てしなくスピードを追求する世界 (WEB+DB PRESS plus)' title='プロセッサを支える技術　　－－果てしなくスピードを追求する世界 (WEB+DB PRESS plus)' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/489471163X/yamanetoshi-22/' target='_blank'><img src='/images/51ZSMEJ9Y2L._SL160_.jpg' width='112' height='160' alt='計算機プログラムの構造と解釈' title='計算機プログラムの構造と解釈' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/4798023809/yamanetoshi-22/' target='_blank'><img src='/images/41R5gj5VRFL._SL160_.jpg' width='113' height='160' alt='入門Git' title='入門Git' /></a>
+</li>
+</ul>
+ </section>
+ <section>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+ <ins class="adsbygoogle"
+     style="display:inline-block;width:120px;height:600px"
+     data-ad-client="ca-pub-5885095939968393"
+     data-ad-slot="7922724663"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</section>
+  
+</aside>
+    
+  </div>
+</div>
+    <footer role="contentinfo">
+      <p>Copyright &copy; 2020  - <a href="https://weblog.metacircular-evaluator.org/license/">License</a> -
+        <span class="credit">Powered by <a target="_blank" href="https://gohugo.io">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/">Hugo-Octopress</a> theme.
+      </p>
+    </footer>
+
+    
+    
+    
+
+    
+      <script>
+        var _gaq=[['_setAccount','UA-45385426-1'],['_trackPageview']];
+        (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+        g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(g,s)}(document,'script'));
+      </script>
+    
+  </body>
+</html>
+   
+

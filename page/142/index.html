@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+  
+    
+    
+      <link href="/css/fonts.css" rel="stylesheet" type="text/css">
+    
+  
+
+  
+  <title>/var/log/messages</title>
+
+  
+  
+  <link rel="stylesheet" href="/css/hugo-octopress.css">
+
+  
+  
+
+  
+    <link rel="stylesheet" href="/css/fork-awesome.min.css">
+  
+
+  
+  <link href="https://weblog.metacircular-evaluator.org/favicon.png" rel="icon">
+
+  
+  <link href="/index.xml" rel="alternate" type="application/rss+xml" title="/var/log/messages" />
+
+  <meta name="description" content="" />
+  <meta name="keywords" content="">
+  <meta name="author" content="">
+
+  
+  <meta name="generator" content="Hugo 0.67.0" />
+
+  
+  
+
+  
+  
+</head>
+<body>
+
+
+<header role="banner">
+<hgroup>
+  
+  <h1><a href="https://weblog.metacircular-evaluator.org/">/var/log/messages</a></h1>
+    <h2></h2>
+</hgroup></header>
+
+
+<nav role="navigation">
+<fieldset class="mobile-nav">
+  
+  <select onchange="location = this.value;">
+    <option value="">Navigate…</option>
+      
+  </select>
+</fieldset>
+
+
+<ul class="main-navigation">
+  
+  
+</ul>
+
+<ul class="subscription">
+  
+</ul>
+
+
+</nav>
+
+
+
+
+  
+
+<div id="main">
+  <div id="content">
+    <div class="blog-index">
+      
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Sep 24, 2014
+     - 1 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2014/09/24/behavior-of-surfaceview-when-adding-viewgroup/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/android/">android </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2014/09/24/behavior-of-surfaceview-when-adding-viewgroup/">ViewGroup を追加する場合の SurfaceView の挙動</a>
+  </h1>
+</header>
+
+        
+          <p><p>LinearLayout に addView したりとか ListView な adapter に add して getView でな場合に SurfaceView (というか SurfaceHolder?) の幅も高さも 0 になってて SurfaceHolder.Callback#surfaceCreated が呼び出されない、という不具合発現。</p>
+<p>適当な値を SurfaceHolder#setFixedSize で設定したら呼び出されるようになったのですが、この方法が妥当なのかどうかさえ謎。こうなってくるときちんとソース読まなきゃ駄目だなぁ。</p></p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2014/09/24/behavior-of-surfaceview-when-adding-viewgroup/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Sep 23, 2014
+     - 1 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2014/09/23/interesting-book/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/misc/">misc </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2014/09/23/interesting-book/">最近面白かった本って何スか?</a>
+  </h1>
+</header>
+
+        
+          <p>先日、K/VM の懇親会にて琉大 i.e. 在籍なあっとん君さんから何気なく聞かれてどきっとした。 よく考えてみるに最近技術本読んでない。ばたばたしてて読</p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2014/09/23/interesting-book/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Sep 22, 2014
+     - 1 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2014/09/22/put-surface-view-on-listview/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/android/">android </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2014/09/22/put-surface-view-on-listview/">リストの行に SurfaceView</a>
+  </h1>
+</header>
+
+        
+          <p>以下なソレをでっち上げようとしているのですが ListView または縦向きの LinearLayout に addView 一行あたり二つ程度の SurfaceView を配置 SurfaceView では MediaPlayer を動かします 行に割り当てるレイアウトの</p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2014/09/22/put-surface-view-on-listview/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Sep 21, 2014
+     - 1 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2014/09/21/list-of-items/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/misc/">misc </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2014/09/21/list-of-items/">買わねばリスト</a>
+  </h1>
+</header>
+
+        
+          <p>以下。 アマゾン提供の micro-b な USB ケーブル 4 本くらい 英語本 Intel Edison ($50 らしい)</p>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Sep 20, 2014
+     - 1 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2014/09/20/boiled-chicken/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/misc/">misc </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2014/09/20/boiled-chicken/">よだれ鶏</a>
+  </h1>
+</header>
+
+        
+          <p><p>今日の成果が以下。</p>
+<iframe src="https://www.flickr.com/photos/yamane-toshiaki/15109147977/player/" width="500" height="375" frameborder="0" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+<p>レシピは以下なカンジ。</p></p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2014/09/20/boiled-chicken/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Sep 19, 2014
+     - 1 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2014/09/19/english/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/english/">english </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2014/09/19/english/">マーク・ピーターセンさんの日本人の英語</a>
+  </h1>
+</header>
+
+        
+          <p>KBC の渕上さんが FB で発信されていた。新書三冊わしも買うかな。 とは言え、English Grammar in Use も満足に読めていないのに (ry 以下、自分メモです。 日本人</p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2014/09/19/english/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Sep 18, 2014
+     - 1 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2014/09/18/about-level-four-portal/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/misc/">misc </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2014/09/18/about-level-four-portal/">level 4 な portal について</a>
+  </h1>
+</header>
+
+        
+          <p>今日、市役所の所を焼いて作ろうとしてみたのですがまとめて焼いてしまったので 青なエージェントさんに速攻で Lv.8 を置かれた 上に 置いたレゾネータを upgrade さ</p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2014/09/18/about-level-four-portal/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Sep 18, 2014
+     - 1 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2014/09/18/implement-splash-screen-by-dialogfragment/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/android/">android </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2014/09/18/implement-splash-screen-by-dialogfragment/">splash を DialogFragment でナニしてみた</a>
+  </h1>
+</header>
+
+        
+          <p><p>splash 要らんでしょ、ってのは賛成なのですが自分マターで作れる訳でもなく。</p>
+<h2 id="ということで">と、いうことで</h2>
+<p>DialogFragment を使った実装をでっち上げてみました。</p></p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2014/09/18/implement-splash-screen-by-dialogfragment/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Sep 17, 2014
+     - 1 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2014/09/17/entries-about-the-presentation/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/misc/">misc </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2014/09/17/entries-about-the-presentation/">プレゼン関連エントリ</a>
+  </h1>
+</header>
+
+        
+          <p>以下、控え。 プレゼンテーション資料の作成で初心者がやりがちな10個のタブー TED を初めて見る人におすすめの 10 本 プログラマの勉強会におけるプレゼン</p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2014/09/17/entries-about-the-presentation/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Sep 16, 2014
+     - 1 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2014/09/16/check-arecord-output-with-pipeline/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/linux/">Linux </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2014/09/16/check-arecord-output-with-pipeline/">arecord の出力はパイプで他に渡せる</a>
+  </h1>
+</header>
+
+        
+          <p><p>od -x に渡してヘッダを確認してみました。</p></p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2014/09/16/check-arecord-output-with-pipeline/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      
+      
+
+
+
+
+
+
+<div class="pagination">
+
+    
+        
+        
+        
+        <a href="/" aria-label="First" class="label-pagination"><i class="fa fa-angle-double-left fa-lg"></i></a>
+    
+
+    
+    
+        <a href="/page/141/" aria-label="Previous" class="label-pagination"><i class="fa fa-angle-left fa-lg"> prev </i>
+    
+
+    
+    
+        <a href="/page/143/" aria-label="Next" class="label-pagination"> next <i class="fa fa-angle-right fa-lg"></i></a>
+    
+
+    
+    
+        <a href="/page/198/" aria-label="Last"><i class="fa fa-angle-double-right fa-lg"></i></a>
+    
+
+</div>
+
+  
+    </div>
+    
+
+<aside class="sidebar thirds">
+  <section class="first odd">
+
+    
+      <h1>About Me</h1>
+    
+
+    <p>
+      
+        <p><a href="https://about.me/yamanetoshi"><img src="/images/glider.png" alt="glider.png"/></a></p><p><strong>YAMANE Toshiaki</strong>(<a href="https://twitter.com/yamanetoshi">@yamanetoshi</a>)</p>
+      
+    </p>
+  </section>
+
+
+
+  
+  <ul class="sidebar-nav">
+    <li class="sidebar-nav-item">
+      <a target="_blank" href="https://github.com/yamanetoshi" title="https://github.com/yamanetoshi"><i class="fa fa-github fa-3x"></i></a>
+      
+      
+      <a target="_blank" href="https://twitter.com/yamanetoshi" title="https://twitter.com/yamanetoshi"><i class="fa fa-twitter fa-3x"></i></a>
+      
+         
+      
+      
+      
+      
+      
+      
+      <a target="_blank" href="https://www.instagram.com/yamanetoshi" title="https://www.instagram.com/yamanetoshi"><i class="fa fa-instagram fa-3x"></i></a>
+      
+
+    
+    
+    </li>
+  </ul>
+
+  
+
+  
+    
+      <section class="odd">
+        
+        
+      </section>
+    
+  
+
+  
+  
+  
+    
+      <section class="even">
+        <h1>Recent Posts</h1>
+        <ul id="recent_posts">
+          
+          
+            
+              <li class="post">
+                <a href="/blog/2020/03/27/hugo-transition/">hugo の移行</a>
+              </li>
+            
+          
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2020/02/10/go-pattern/">隅のカタチ</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2020/01/27/readable-code/">リーダブルコード</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2020/01/05/this-year/">今年</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2020/01/04/basic-form-of-life-and-death/">死活の基本形</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2019/12/31/new-years-eve/">おおみそか</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2019/12/27/bicycle-purchase/">自転車購入</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2019/12/25/year-end-todo/">年末年始の TODO</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2019/12/05/wrapping-up/">スッキリわかる Python 入門要約</a>
+              </li>
+            
+          
+        </ul>
+      </section>
+    
+  
+
+<section>
+    <h1>Books</h1>
+ <ul>
+<li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/4873117127/yamanetoshi-22/' target='_blank'><img src='/images/514ifs4Y5bL._SL160_.jpg' width='113' height='160' alt='コンピュータシステムの理論と実装 ―モダンなコンピュータの作り方' title='コンピュータシステムの理論と実装 ―モダンなコンピュータの作り方' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/4873116309/yamanetoshi-22/' target='_blank'><img src='/images/41SlY0zvpKL._SL160_.jpg' width='113' height='160' alt='Team Geek ―Googleのギークたちはいかにしてチームを作るのか' title='Team Geek ―Googleのギークたちはいかにしてチームを作るのか' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/4873114535/yamanetoshi-22/' target='_blank'><img src='/images/51NDW60LBQL._SL160_.jpg' width='125' height='160' alt='Prototyping Lab ―「作りながら考える」ためのArduino実践レシピ (Make:PROJECTS)' title='Prototyping Lab ―「作りながら考える」ためのArduino実践レシピ (Make:PROJECTS)' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/B0054RGYNQ/yamanetoshi-22/' target='_blank'><img src='/images/51F7PJ0KzYL._SL160_.jpg' width='124' height='160' alt='Fearless Change: Patterns for Introducing New Ideas' title='Fearless Change: Patterns for Introducing New Ideas' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/4774145211/yamanetoshi-22/' target='_blank'><img src='/images/515WitVr5lL._SL160_.jpg' width='112' height='160' alt='プロセッサを支える技術　　－－果てしなくスピードを追求する世界 (WEB+DB PRESS plus)' title='プロセッサを支える技術　　－－果てしなくスピードを追求する世界 (WEB+DB PRESS plus)' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/489471163X/yamanetoshi-22/' target='_blank'><img src='/images/51ZSMEJ9Y2L._SL160_.jpg' width='112' height='160' alt='計算機プログラムの構造と解釈' title='計算機プログラムの構造と解釈' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/4798023809/yamanetoshi-22/' target='_blank'><img src='/images/41R5gj5VRFL._SL160_.jpg' width='113' height='160' alt='入門Git' title='入門Git' /></a>
+</li>
+</ul>
+ </section>
+ <section>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+ <ins class="adsbygoogle"
+     style="display:inline-block;width:120px;height:600px"
+     data-ad-client="ca-pub-5885095939968393"
+     data-ad-slot="7922724663"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</section>
+  
+</aside>
+    
+  </div>
+</div>
+    <footer role="contentinfo">
+      <p>Copyright &copy; 2020  - <a href="https://weblog.metacircular-evaluator.org/license/">License</a> -
+        <span class="credit">Powered by <a target="_blank" href="https://gohugo.io">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/">Hugo-Octopress</a> theme.
+      </p>
+    </footer>
+
+    
+    
+    
+
+    
+      <script>
+        var _gaq=[['_setAccount','UA-45385426-1'],['_trackPageview']];
+        (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+        g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(g,s)}(document,'script'));
+      </script>
+    
+  </body>
+</html>
+   
+

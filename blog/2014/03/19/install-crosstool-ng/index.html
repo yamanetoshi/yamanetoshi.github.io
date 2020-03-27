@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+  
+    
+    
+      <link href="/css/fonts.css" rel="stylesheet" type="text/css">
+    
+  
+
+  
+  <title>crosstool-NG 入れるなど</title>
+
+  
+  
+  <link rel="stylesheet" href="/css/hugo-octopress.css">
+
+  
+  
+
+  
+    <link rel="stylesheet" href="/css/fork-awesome.min.css">
+  
+
+  
+  <link href="https://weblog.metacircular-evaluator.org/favicon.png" rel="icon">
+
+  
+  
+
+  <meta name="description" content="" />
+  <meta name="keywords" content="">
+  <meta name="author" content="">
+
+  
+  <meta name="generator" content="Hugo 0.67.0" />
+
+  
+  
+
+  
+  
+</head>
+<body>
+
+
+<header role="banner">
+<hgroup>
+  
+  <h1><a href="https://weblog.metacircular-evaluator.org/">/var/log/messages</a></h1>
+    <h2></h2>
+</hgroup></header>
+
+
+<nav role="navigation">
+<fieldset class="mobile-nav">
+  
+  <select onchange="location = this.value;">
+    <option value="">Navigate…</option>
+      
+  </select>
+</fieldset>
+
+
+<ul class="main-navigation">
+  
+  
+</ul>
+
+<ul class="subscription">
+  
+</ul>
+
+
+</nav>
+
+
+<div id="main">
+  <div id="content">
+    <div>
+      <article class="hentry" role="article">
+
+        
+        
+
+<header>
+  <p class="meta">Mar 19, 2014
+     - 2 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2014/03/19/install-crosstool-ng/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/linux/">Linux </a>
+    
+  </p>
+  <h1 class="entry-title">
+     crosstool-NG 入れるなど 
+  </h1>
+</header>
+
+
+        <div class="entry-content">
+          
+          
+          
+          <p>先日入手した、BareMetalで遊ぶ RaspberryPi に出てるソレを云々してみます。</p>
+<p>とりあえずパケジを導入。</p>
+<pre><code>$ sudo apt-get install build-essential python3 python2.7 \
+python-dev libzip-dev automake libncurses5-dev gperf bison \
+flex gawk libtool libexpat1-dev expat
+</code></pre>
+<p>あるいは 32bit 環境用ライブラリを、とのことで以下。</p>
+<pre><code>$ sudo dpkg --add-architecture i386
+$ sudo apt-get update
+$ sudo apt-get install ia32-libs libgtk2.0-0:i386
+</code></pre>
+<p>久しぶりに apt-get update とかしたのですが apt-line に docker だの heroku の toolbelt とか入っててアレですね。ともあれ、これで crosstool-NG の導入準備は OK とのこと。</p>
+<p>とりあえず環境構築の手順としては</p>
+<ul>
+<li>crosstool-NG の導入</li>
+<li>環境設定</li>
+<li>コンパイルとインストール</li>
+</ul>
+<p>とあります。とりあえずディレクトリを掘って</p>
+<pre><code>$ mkdir ~/cross
+$ mkdir ~/cross/rpi
+$ mkdir ~/cross/src
+</code></pre>
+<p>rpi にコンパイラ、src にソースを、とのこと。で <a href="http://crosstool-ng.org">http://crosstool-ng.org</a> からソースコードを取得して展開して ~/cross 配下に導入なのか。</p>
+<p>cross 配下ですが以下なカンジになりました。</p>
+<pre><code>$ ls
+bin  lib  rpi  share  src
+</code></pre>
+<p>次に環境設定、ということで</p>
+<ul>
+<li>環境設定を保存するディレクトリを掘る</li>
+<li>設定テンプレをそこに保存</li>
+</ul>
+<p>とのことで以下。</p>
+<pre><code>$ mkdir ~/cross/src/ct-ng_rpi
+$ cd ~/cross/src/ct-ng_rpi
+$ ~/cross/bin/ct-ng arm-unknown-eabi
+$ ls
+config  config.gen
+</code></pre>
+<p>何かができてます。glibc 使いたくないので arm-unknown-eabi 選択ですか。そしてこのテンプレのままでは RasPI への最適化が不十分とのことで以下四点の設定を、とのこと。</p>
+<ul>
+<li>インストール先</li>
+<li>RasPI 最適化 (hard-float 対応、arm1176jzf-s 最適化)</li>
+<li>BareMetal 環境特有の設定 (MMU 無効化、libc システムコール未実装)</li>
+<li>gcc やライブラリのバージョン指定</li>
+</ul>
+<p>で、何するか、というと menuconfig みたいのを出して設定を変えて build する模様。</p>
+<pre><code>$ ~/cross/bin/ct-ng menuconfig
+</code></pre>
+<p>これはこれはなソレが出てきました。諸々修正を盛り込んでいるのですが gcc を最新に、ってこれは端末に導入されている、という理解で良いのだろうか。あるいは build の中で自動取得なのかな。</p>
+<p>ええと gcc は 4.8.2 が最新。newlib は 2.1.0 が最新なのか。テキストでは 1.20.0 ってなってますが最新を指定してしまえ。</p>
+<p>と思ったら指定できる最新は 4.8.1 ですね。そして newlib は 1.20.0 でした。</p>
+<p>で、build を実行。</p>
+<pre><code>$ ~/cross/bin/ct-ng build
+</code></pre>
+<p>あとは PATH を通しておけば良い模様。menuconfig にて設定変更した項目を以下に列挙しておきます。</p>
+<ul>
+<li>Paths and misc options の Local tarballs directory</li>
+<li>Prefix directory に ~/cross/rpi/${CT_TARGET} 指定</li>
+<li>Target options の Use the MMU のチェック外す</li>
+<li>Target optimisations は以下を指定
+<ul>
+<li>Architecture level は armv6zk</li>
+<li>Emit assembly for CPU および Tune for CPU には arm1176jzf-s</li>
+<li>Use specific FPU は vfp</li>
+</ul>
+</li>
+<li>C compiler および C-library のバージョンは最新を選択</li>
+<li>Companion libraries の GMP, MPFR, MPC のバージョンを全て最新に</li>
+</ul>
+<p>ちょっと BareMetal 本もきちんと目を通せていないので今のうちに確認しとこ。</p>
+        </div>
+        
+
+<footer>
+  <p class="meta">
+    <span class="byline author vcard">Posted by <span class="fn"></span></span>
+    
+    <time>Mar 19, 2014</time>
+    
+    </span>
+  </p>
+
+  
+
+  <p class="meta">
+    
+        <a class="basic-alignment left" href="https://weblog.metacircular-evaluator.org/blog/2014/03/18/running-test-in-android-studio/" title="Android Studio 上でテスツ動いた">Android Studio 上でテスツ動いた</a>
+    
+
+    
+      <a class="basic-alignment right" href="https://weblog.metacircular-evaluator.org/blog/2014/03/19/jtag-debugger/" title="BareMetal 関連にて">BareMetal 関連にて</a>
+    
+  </p>
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle"
+         style="display:inline-block;width:728px;height:90px"
+         data-ad-client="ca-pub-5885095939968393"
+         data-ad-slot="3213323462"></ins>
+  <script>
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+ </script>
+
+  
+    
+      <div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function() {
+      
+      
+      
+      if (window.location.hostname == "localhost")
+          return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'yamanetoshi';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    
+  
+</footer>
+
+      </article>
+    </div>
+    
+
+<aside class="sidebar thirds">
+  <section class="first odd">
+
+    
+      <h1>About Me</h1>
+    
+
+    <p>
+      
+        <p><a href="https://about.me/yamanetoshi"><img src="/images/glider.png" alt="glider.png"/></a></p><p><strong>YAMANE Toshiaki</strong>(<a href="https://twitter.com/yamanetoshi">@yamanetoshi</a>)</p>
+      
+    </p>
+  </section>
+
+
+
+  
+  <ul class="sidebar-nav">
+    <li class="sidebar-nav-item">
+      <a target="_blank" href="https://github.com/yamanetoshi" title="https://github.com/yamanetoshi"><i class="fa fa-github fa-3x"></i></a>
+      
+      
+      <a target="_blank" href="https://twitter.com/yamanetoshi" title="https://twitter.com/yamanetoshi"><i class="fa fa-twitter fa-3x"></i></a>
+      
+         
+      
+      
+      
+      
+      
+      
+      <a target="_blank" href="https://www.instagram.com/yamanetoshi" title="https://www.instagram.com/yamanetoshi"><i class="fa fa-instagram fa-3x"></i></a>
+      
+
+    
+    
+    </li>
+  </ul>
+
+  
+
+  
+    
+      <section class="odd">
+        
+        
+      </section>
+    
+  
+
+  
+  
+  
+    
+      <section class="even">
+        <h1>Recent Posts</h1>
+        <ul id="recent_posts">
+          
+          
+            
+              <li class="post">
+                <a href="/blog/2020/03/27/hugo-transition/">hugo の移行</a>
+              </li>
+            
+          
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2020/02/10/go-pattern/">隅のカタチ</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2020/01/27/readable-code/">リーダブルコード</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2020/01/05/this-year/">今年</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2020/01/04/basic-form-of-life-and-death/">死活の基本形</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2019/12/31/new-years-eve/">おおみそか</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2019/12/27/bicycle-purchase/">自転車購入</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2019/12/25/year-end-todo/">年末年始の TODO</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2019/12/05/wrapping-up/">スッキリわかる Python 入門要約</a>
+              </li>
+            
+          
+        </ul>
+      </section>
+    
+  
+
+<section>
+    <h1>Books</h1>
+ <ul>
+<li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/4873117127/yamanetoshi-22/' target='_blank'><img src='/images/514ifs4Y5bL._SL160_.jpg' width='113' height='160' alt='コンピュータシステムの理論と実装 ―モダンなコンピュータの作り方' title='コンピュータシステムの理論と実装 ―モダンなコンピュータの作り方' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/4873116309/yamanetoshi-22/' target='_blank'><img src='/images/41SlY0zvpKL._SL160_.jpg' width='113' height='160' alt='Team Geek ―Googleのギークたちはいかにしてチームを作るのか' title='Team Geek ―Googleのギークたちはいかにしてチームを作るのか' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/4873114535/yamanetoshi-22/' target='_blank'><img src='/images/51NDW60LBQL._SL160_.jpg' width='125' height='160' alt='Prototyping Lab ―「作りながら考える」ためのArduino実践レシピ (Make:PROJECTS)' title='Prototyping Lab ―「作りながら考える」ためのArduino実践レシピ (Make:PROJECTS)' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/B0054RGYNQ/yamanetoshi-22/' target='_blank'><img src='/images/51F7PJ0KzYL._SL160_.jpg' width='124' height='160' alt='Fearless Change: Patterns for Introducing New Ideas' title='Fearless Change: Patterns for Introducing New Ideas' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/4774145211/yamanetoshi-22/' target='_blank'><img src='/images/515WitVr5lL._SL160_.jpg' width='112' height='160' alt='プロセッサを支える技術　　－－果てしなくスピードを追求する世界 (WEB+DB PRESS plus)' title='プロセッサを支える技術　　－－果てしなくスピードを追求する世界 (WEB+DB PRESS plus)' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/489471163X/yamanetoshi-22/' target='_blank'><img src='/images/51ZSMEJ9Y2L._SL160_.jpg' width='112' height='160' alt='計算機プログラムの構造と解釈' title='計算機プログラムの構造と解釈' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/4798023809/yamanetoshi-22/' target='_blank'><img src='/images/41R5gj5VRFL._SL160_.jpg' width='113' height='160' alt='入門Git' title='入門Git' /></a>
+</li>
+</ul>
+ </section>
+ <section>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+ <ins class="adsbygoogle"
+     style="display:inline-block;width:120px;height:600px"
+     data-ad-client="ca-pub-5885095939968393"
+     data-ad-slot="7922724663"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</section>
+  
+</aside>
+
+  </div>
+</div>
+
+    <footer role="contentinfo">
+      <p>Copyright &copy; 2020  - <a href="https://weblog.metacircular-evaluator.org/license/">License</a> -
+        <span class="credit">Powered by <a target="_blank" href="https://gohugo.io">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/">Hugo-Octopress</a> theme.
+      </p>
+    </footer>
+
+    
+    
+    
+
+    
+      <script>
+        var _gaq=[['_setAccount','UA-45385426-1'],['_trackPageview']];
+        (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+        g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(g,s)}(document,'script'));
+      </script>
+    
+  </body>
+</html>
+

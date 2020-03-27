@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+  
+    
+    
+      <link href="/css/fonts.css" rel="stylesheet" type="text/css">
+    
+  
+
+  
+  <title>DroidKaigi2018UnitTestHandsOn 実装掘削メモ</title>
+
+  
+  
+  <link rel="stylesheet" href="/css/hugo-octopress.css">
+
+  
+  
+
+  
+    <link rel="stylesheet" href="/css/fork-awesome.min.css">
+  
+
+  
+  <link href="https://weblog.metacircular-evaluator.org/favicon.png" rel="icon">
+
+  
+  
+
+  <meta name="description" content="" />
+  <meta name="keywords" content="">
+  <meta name="author" content="">
+
+  
+  <meta name="generator" content="Hugo 0.67.0" />
+
+  
+  
+
+  
+  
+</head>
+<body>
+
+
+<header role="banner">
+<hgroup>
+  
+  <h1><a href="https://weblog.metacircular-evaluator.org/">/var/log/messages</a></h1>
+    <h2></h2>
+</hgroup></header>
+
+
+<nav role="navigation">
+<fieldset class="mobile-nav">
+  
+  <select onchange="location = this.value;">
+    <option value="">Navigate…</option>
+      
+  </select>
+</fieldset>
+
+
+<ul class="main-navigation">
+  
+  
+</ul>
+
+<ul class="subscription">
+  
+</ul>
+
+
+</nav>
+
+
+<div id="main">
+  <div id="content">
+    <div>
+      <article class="hentry" role="article">
+
+        
+        
+
+<header>
+  <p class="meta">Feb 16, 2018
+     - 3 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2018/02/16/unit-test-hands-on/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/android/">android </a>
+    
+  </p>
+  <h1 class="entry-title">
+     DroidKaigi2018UnitTestHandsOn 実装掘削メモ 
+  </h1>
+</header>
+
+
+        <div class="entry-content">
+          
+          
+          
+          <p>とりあえず、<code>AndroidManifest</code> によれば MAIN/LAUNCHER な Activity は　<code>AccountInputActivity</code> ということなので、そちら始点で掘削着手。とりあえず開いてみたのが以下です。</p>
+<ul>
+<li>presentation/view/activity/AccountInputActivity.java</li>
+<li>presentation/view/activity/BaseActivity.java</li>
+<li>presentation/view/fragment/AccountInputFragment.java</li>
+<li>presentation/view/fragment/BaseFragment.java</li>
+<li>presentation/view/contract/AccountInputContract.java</li>
+<li>presentation/presenter/AccountInputPresenter.java</li>
+</ul>
+<p>UnitTest Hands-on では上記で試験が書かれていたのは presenter 配下のもののみ、でした。確かに確認してみるに</p>
+<ul>
+<li>BaseActivity では replaceFragment というメソッド定義のみ（引数で指定された Fragment を表示）</li>
+<li>AccountInputActivity では onCreate の定義のみ（スーパークラスのメソッド呼び出し、setContentView、replaceFragment の呼び出しのみ）</li>
+</ul>
+<p>あるいは Fragment および Contract についても試験が不要な作りになっているものと思われますが、BaseFragment から確認をすすめていきます。</p>
+<h2 id="basefragment">BaseFragment</h2>
+<p>若干果てしない感があるのですが確認していきます。</p>
+<p>先ず、クラス定義の先頭あたりが以下。</p>
+<pre><code>public abstract class BaseFragment&lt;V extends BaseView, P extends BasePresenter&lt;V&gt;&gt; extends Fragment {
+  protected P presenter;
+
+  private Unbinder unbinder;
+
+  @NonNull
+  protected abstract V getViewContract();
+
+  @NonNull
+  protected abstract P getPresenter();
+
+  @LayoutRes
+  protected abstract int getLayoutRes();
+
+  @NonNull
+  protected abstract Unbinder bindView(@NonNull View fragmentView);
+</code></pre><p>属性二点とサブクラスで定義が強制されるメソッドの定義です。というかこれ、BaseView と BasePresenter の定義も確認したほうが良いのかな。先ず presenter/view/BaseView.java から。これは interface ですね。</p>
+<pre><code>public interface BaseView {
+  void startActivity(@NonNull Intent intent);
+
+  void startActivityForResult(@NonNull Intent intent, int requestCode);
+
+  void finishActivity();
+
+  @Nullable
+  Context getContext();
+
+  @Nullable
+  FragmentActivity getActivity();
+}
+</code></pre><p>先走りますが、<code>AccountInputContract.View</code> はこれを継承してもう一つメソッド定義、になっています。</p>
+<pre><code>public interface AccountInputContract {
+  interface View extends BaseView {
+    void showInputError(@StringRes int errorRes);
+  }
+</code></pre><p>で、<code>AccountInputFragment</code> がこの <code>AccountInputContrace.View</code> を実装、という形になっています。ということは <code>AccountInputFragment</code> は <code>BaseView</code> を実装している、ということでもあるようです。次は <code>BasePresenter</code> を確認します。少しづつすすめます。</p>
+<pre><code>public abstract class BasePresenter&lt;V extends BaseView&gt; {
+  protected V view;
+
+  public void setView(V view) {
+    this.view = view;
+  }
+</code></pre><p>こちらはいつか実装が記述されていることで abstract なクラス定義になっているようです。ちなみに <code>AccountInputPresenter</code> の定義を少しだけ確認してみるに</p>
+<pre><code>public class AccountInputPresenter extends BasePresenter&lt;AccountInputContract.View&gt; implements AccountInputContract.Interaction {
+</code></pre><p>という書き方になっています。先に確認したとおり、<code>AccountInputFragment</code> は <code>AccountInputContract.View</code> です。ということは Presenter は Fragment を「保持」してる、ということになるようです。持たしてあげるメソッドが <code>setView</code> なのだろうと思われます (別途確認)。</p>
+<p><code>BasePresenter</code> の定義の残りを以下に引用します。</p>
+<pre><code>  public void onAttach() {
+    // NOP
+  }
+
+  public void onViewCreated() {
+    // NOP
+  }
+
+  public void onResume() {
+    // NOP
+  }
+
+  public void onPause() {
+    // NOP
+  }
+
+  public void onDestroyView() {
+    // NOP
+  }
+
+  public void onDetach() {
+    // NOP
+  }
+
+  public void startActivity(@NonNull Intent intent) {
+    view.startActivity(intent);
+  }
+
+  public void startActivityForResult(@NonNull Intent intent, int requestCode) {
+    view.startActivityForResult(intent, requestCode);
+  }
+
+  public void finishActivity() {
+    view.finishActivity();
+  }
+
+  @Nullable
+  public Context getContext() {
+    return view.getContext();
+  }
+
+  @Nullable
+  public FragmentActivity getActivity() {
+    return view.getActivity();
+  }
+}
+</code></pre><p><code>startActivity</code> 以降では <code>BaseView</code> にて実装が強制されたメソッドを呼び出すまたは呼び出して戻り値を戻す形になっています。繰り返しになりますが、このアーキテクチャでは <code>BaseView</code> を Fragment が実装している、というのがポイントです。</p>
+<p><code>BaseFragment</code> の定義の確認に戻ります。onAttach の定義が以下です。</p>
+<pre><code>  @Override
+  public void onAttach(Context context) {
+    super.onAttach(context);
+
+    presenter = getPresenter();
+    presenter.onAttach();
+    presenter.setView(getViewContract());
+  }
+</code></pre><p>ここで関連付けが行われているのがわかります。 Activity に attach された時点で</p>
+<ul>
+<li>Presenter を取得して属性に設定</li>
+<li>Presenter#onAttach を呼び出し</li>
+<li>presenter の view 属性に getViewContract() の戻り値（基本的には Fragment のインスタンス参照）を設定</li>
+</ul>
+<p>という形になっています。以降の定義を以下に引用します。</p>
+<pre><code>  @Nullable
+  @Override
+  public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    return inflater.inflate(getLayoutRes(), container, false);
+  }
+
+  @Override
+  public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    super.onViewCreated(view, savedInstanceState);
+    unbinder = bindView(view);
+    presenter.onViewCreated();
+  }
+
+  @Override
+  public void onResume() {
+    super.onResume();
+    BusProvider.INSTANCE.get().register(presenter);
+    presenter.onResume();
+  }
+
+  @Override
+  public void onPause() {
+    presenter.onPause();
+    BusProvider.INSTANCE.get().unregister(presenter);
+    super.onPause();
+  }
+
+  @Override
+  public void onDestroyView() {
+    presenter.onDestroyView();
+    unbinder.unbind();
+    super.onDestroyView();
+  }
+
+  @Override
+  public void onDetach() {
+    presenter.onDetach();
+    super.onDetach();
+  }
+
+  public void finishActivity() {
+    ofNullable(getActivity()).ifPresent(Activity::finish);
+  }
+}
+</code></pre><p>スーパークラス側で layout の　inflate を行っています。getLayoutRes メソッドで正しい ID を戻すように実装しなければ、ということになります。また、一部不明な部分がありますが、状態遷移時の callback において Presenter のメソッドが呼び出されています。基本的にはここトリガで様々な処理を行っていく形になるはずです。</p>
+<p>以下、要確認事項を列挙しておきます。</p>
+<ul>
+<li>onViewCreated にて呼び出されている bindView について　(unbinder 属性に戻り値設定)</li>
+<li>onResume にて呼び出されている BusProvider のメソッドについて</li>
+<li>onPause にて呼び出されている BusProvider のメソッドについて</li>
+<li>onDestroyView でも　unbinder 属性が使われている</li>
+</ul>
+        </div>
+        
+
+<footer>
+  <p class="meta">
+    <span class="byline author vcard">Posted by <span class="fn"></span></span>
+    
+    <time>Feb 16, 2018</time>
+    
+    </span>
+  </p>
+
+  
+
+  <p class="meta">
+    
+        <a class="basic-alignment left" href="https://weblog.metacircular-evaluator.org/blog/2018/02/15/unit-test-hands-on/" title="Unit Test の Hands-on 資料まとめ">Unit Test の Hands-on 資料まとめ</a>
+    
+
+    
+      <a class="basic-alignment right" href="https://weblog.metacircular-evaluator.org/blog/2018/02/18/hugo-octopress/" title="Hugo-Octopress テーマ修正">Hugo-Octopress テーマ修正</a>
+    
+  </p>
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle"
+         style="display:inline-block;width:728px;height:90px"
+         data-ad-client="ca-pub-5885095939968393"
+         data-ad-slot="3213323462"></ins>
+  <script>
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+ </script>
+
+  
+    
+      <div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function() {
+      
+      
+      
+      if (window.location.hostname == "localhost")
+          return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'yamanetoshi';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    
+  
+</footer>
+
+      </article>
+    </div>
+    
+
+<aside class="sidebar thirds">
+  <section class="first odd">
+
+    
+      <h1>About Me</h1>
+    
+
+    <p>
+      
+        <p><a href="https://about.me/yamanetoshi"><img src="/images/glider.png" alt="glider.png"/></a></p><p><strong>YAMANE Toshiaki</strong>(<a href="https://twitter.com/yamanetoshi">@yamanetoshi</a>)</p>
+      
+    </p>
+  </section>
+
+
+
+  
+  <ul class="sidebar-nav">
+    <li class="sidebar-nav-item">
+      <a target="_blank" href="https://github.com/yamanetoshi" title="https://github.com/yamanetoshi"><i class="fa fa-github fa-3x"></i></a>
+      
+      
+      <a target="_blank" href="https://twitter.com/yamanetoshi" title="https://twitter.com/yamanetoshi"><i class="fa fa-twitter fa-3x"></i></a>
+      
+         
+      
+      
+      
+      
+      
+      
+      <a target="_blank" href="https://www.instagram.com/yamanetoshi" title="https://www.instagram.com/yamanetoshi"><i class="fa fa-instagram fa-3x"></i></a>
+      
+
+    
+    
+    </li>
+  </ul>
+
+  
+
+  
+    
+      <section class="odd">
+        
+        
+      </section>
+    
+  
+
+  
+  
+  
+    
+      <section class="even">
+        <h1>Recent Posts</h1>
+        <ul id="recent_posts">
+          
+          
+            
+              <li class="post">
+                <a href="/blog/2020/03/27/hugo-transition/">hugo の移行</a>
+              </li>
+            
+          
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2020/02/10/go-pattern/">隅のカタチ</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2020/01/27/readable-code/">リーダブルコード</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2020/01/05/this-year/">今年</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2020/01/04/basic-form-of-life-and-death/">死活の基本形</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2019/12/31/new-years-eve/">おおみそか</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2019/12/27/bicycle-purchase/">自転車購入</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2019/12/25/year-end-todo/">年末年始の TODO</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2019/12/05/wrapping-up/">スッキリわかる Python 入門要約</a>
+              </li>
+            
+          
+        </ul>
+      </section>
+    
+  
+
+<section>
+    <h1>Books</h1>
+ <ul>
+<li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/4873117127/yamanetoshi-22/' target='_blank'><img src='/images/514ifs4Y5bL._SL160_.jpg' width='113' height='160' alt='コンピュータシステムの理論と実装 ―モダンなコンピュータの作り方' title='コンピュータシステムの理論と実装 ―モダンなコンピュータの作り方' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/4873116309/yamanetoshi-22/' target='_blank'><img src='/images/41SlY0zvpKL._SL160_.jpg' width='113' height='160' alt='Team Geek ―Googleのギークたちはいかにしてチームを作るのか' title='Team Geek ―Googleのギークたちはいかにしてチームを作るのか' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/4873114535/yamanetoshi-22/' target='_blank'><img src='/images/51NDW60LBQL._SL160_.jpg' width='125' height='160' alt='Prototyping Lab ―「作りながら考える」ためのArduino実践レシピ (Make:PROJECTS)' title='Prototyping Lab ―「作りながら考える」ためのArduino実践レシピ (Make:PROJECTS)' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/B0054RGYNQ/yamanetoshi-22/' target='_blank'><img src='/images/51F7PJ0KzYL._SL160_.jpg' width='124' height='160' alt='Fearless Change: Patterns for Introducing New Ideas' title='Fearless Change: Patterns for Introducing New Ideas' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/4774145211/yamanetoshi-22/' target='_blank'><img src='/images/515WitVr5lL._SL160_.jpg' width='112' height='160' alt='プロセッサを支える技術　　－－果てしなくスピードを追求する世界 (WEB+DB PRESS plus)' title='プロセッサを支える技術　　－－果てしなくスピードを追求する世界 (WEB+DB PRESS plus)' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/489471163X/yamanetoshi-22/' target='_blank'><img src='/images/51ZSMEJ9Y2L._SL160_.jpg' width='112' height='160' alt='計算機プログラムの構造と解釈' title='計算機プログラムの構造と解釈' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/4798023809/yamanetoshi-22/' target='_blank'><img src='/images/41R5gj5VRFL._SL160_.jpg' width='113' height='160' alt='入門Git' title='入門Git' /></a>
+</li>
+</ul>
+ </section>
+ <section>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+ <ins class="adsbygoogle"
+     style="display:inline-block;width:120px;height:600px"
+     data-ad-client="ca-pub-5885095939968393"
+     data-ad-slot="7922724663"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</section>
+  
+</aside>
+
+  </div>
+</div>
+
+    <footer role="contentinfo">
+      <p>Copyright &copy; 2020  - <a href="https://weblog.metacircular-evaluator.org/license/">License</a> -
+        <span class="credit">Powered by <a target="_blank" href="https://gohugo.io">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/">Hugo-Octopress</a> theme.
+      </p>
+    </footer>
+
+    
+    
+    
+
+    
+      <script>
+        var _gaq=[['_setAccount','UA-45385426-1'],['_trackPageview']];
+        (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+        g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(g,s)}(document,'script'));
+      </script>
+    
+  </body>
+</html>
+

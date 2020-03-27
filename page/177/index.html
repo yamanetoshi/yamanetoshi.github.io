@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+  
+    
+    
+      <link href="/css/fonts.css" rel="stylesheet" type="text/css">
+    
+  
+
+  
+  <title>/var/log/messages</title>
+
+  
+  
+  <link rel="stylesheet" href="/css/hugo-octopress.css">
+
+  
+  
+
+  
+    <link rel="stylesheet" href="/css/fork-awesome.min.css">
+  
+
+  
+  <link href="https://weblog.metacircular-evaluator.org/favicon.png" rel="icon">
+
+  
+  <link href="/index.xml" rel="alternate" type="application/rss+xml" title="/var/log/messages" />
+
+  <meta name="description" content="" />
+  <meta name="keywords" content="">
+  <meta name="author" content="">
+
+  
+  <meta name="generator" content="Hugo 0.67.0" />
+
+  
+  
+
+  
+  
+</head>
+<body>
+
+
+<header role="banner">
+<hgroup>
+  
+  <h1><a href="https://weblog.metacircular-evaluator.org/">/var/log/messages</a></h1>
+    <h2></h2>
+</hgroup></header>
+
+
+<nav role="navigation">
+<fieldset class="mobile-nav">
+  
+  <select onchange="location = this.value;">
+    <option value="">Navigate…</option>
+      
+  </select>
+</fieldset>
+
+
+<ul class="main-navigation">
+  
+  
+</ul>
+
+<ul class="subscription">
+  
+</ul>
+
+
+</nav>
+
+
+
+
+  
+
+<div id="main">
+  <div id="content">
+    <div class="blog-index">
+      
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Jan 23, 2014
+     - 2 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2014/01/23/git/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/git/">Git </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2014/01/23/git/">直近ではない remote に push してる commit の取り消し</a>
+  </h1>
+</header>
+
+        
+          <p><p>公開している歴史を rebase とかで変更してはいけない。</p>
+<p>ので、どうするかというとバージョン (commit) を特定してその時点の状態にファイルを巻戻してしまえば良いはず。git checkout で良いのかどうか。</p>
+<pre><code>$ git checkout &lt;commit object の id&gt; path
+</code></pre>
+<p>で、そのまま commit を作ってしまえば良いはず。</p>
+<h1 id="そんな対応をした訳ではないのでこんな書き方になっててスミマセン-誰">そんな対応をした訳ではないのでこんな書き方になっててスミマセン (誰</h1></p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2014/01/23/git/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Jan 22, 2014
+     - 1 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2014/01/22/android-dialog-dismiss/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/android/">android </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2014/01/22/android-dialog-dismiss/">Dialog から設定値入力させて Alert 表示後に両方 dismiss</a>
+  </h1>
+</header>
+
+        
+          <p><p>DialogFragment から DialogFragment 表示するような真似をしてまして、一つは dismiss できるけどもう一つが、な現象が出てしまいハマってました。</p>
+<p><a href="http://eggdev.mobaegg.com/2012/08/blog-post_4.html">ダイアログが重ならないように制御する</a> にて以下な対処が紹介されており、これでイケました。</p>
+<pre><code>FragmentManager manager = getFragmentManager();
+final HogeDialogFragment prev = (HogeDialogFragment)manager.findFragmentByTag(&quot;hoge_dialog&quot;);
+prev.dismiss();
+</code></pre></p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2014/01/22/android-dialog-dismiss/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Jan 22, 2014
+     - 1 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2014/01/22/operation-of-revision-in-svn/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/misc/">misc </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2014/01/22/operation-of-revision-in-svn/">subversion でリビジョンの巻戻し</a>
+  </h1>
+</header>
+
+        
+          <p><p>TortoiseSVN 限定で。</p>
+<p>リビジョンを巻戻すのは Windows Explore から右クリックで TortoiseSVN -&gt; Show log から巻戻す revision を選択して Revert changes from {this, these} revision で巻き戻せるのは分かったのですが、それをさらに戻す、という操作がアレだったので確認。</p></p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2014/01/22/operation-of-revision-in-svn/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Jan 21, 2014
+     - 1 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2014/01/21/about-rails-api/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/rails/">rails </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2014/01/21/about-rails-api/">Rails API 関連の備忘など</a>
+  </h1>
+</header>
+
+        
+          <p><p><a href="http://matthewlehner.net/rails-api-testing-guidelines/">Rails API Testing Best Practice with RSpec</a> を見つつ試験修正。</p></p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2014/01/21/about-rails-api/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Jan 21, 2014
+     - 1 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2014/01/21/reminder-of-android-screen-rotate/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/android/">android </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2014/01/21/reminder-of-android-screen-rotate/">screen rotate な対応に関する備忘</a>
+  </h1>
+</header>
+
+        
+          <p><p>自分メモ。</p></p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2014/01/21/reminder-of-android-screen-rotate/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Jan 21, 2014
+     - 1 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2014/01/21/the-open-source-data-science-curriculum/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/misc/">misc </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2014/01/21/the-open-source-data-science-curriculum/">自習ネタ</a>
+  </h1>
+</header>
+
+        
+          <p>空き時間がどこまで作れるのか、な今日この頃ですが英語なナニ含めで以下を云々な方向で考えています。 The Open Source Data Science Curriculum とは言え着手はいつになるやらor</p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2014/01/21/the-open-source-data-science-curriculum/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Jan 20, 2014
+     - 1 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2014/01/20/screen-rotation-and-preferencescreen/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/android/">android </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2014/01/20/screen-rotation-and-preferencescreen/">screen rotation で初期化される PreferenceScreen</a>
+  </h1>
+</header>
+
+        
+          <p>Preferences な設定画面を回転可能にしたのは良いのですが、rotate する時にある PrefereceScreen が初期化 (というかその一つ上のレベルの PrefereceScreen が表示) されてしまう、という</p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2014/01/20/screen-rotation-and-preferencescreen/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Jan 20, 2014
+     - 1 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2014/01/20/dialog-that-does-not-close/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/android/">android </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2014/01/20/dialog-that-does-not-close/">ボタンクリックで閉じないダイアログ</a>
+  </h1>
+</header>
+
+        
+          <p>Android の Dialog ってボタンクリック後でないと基本的にはエラーの確認などができない上にボタンが押されたら Dialog が dismiss されてしまう。何とかしてくれ、と言われて Google</p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2014/01/20/dialog-that-does-not-close/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Jan 20, 2014
+     - 1 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2014/01/20/boke-orz/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/rails/">rails </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2014/01/20/boke-orz/">強烈なボケをカマシていた件</a>
+  </h1>
+</header>
+
+        
+          <p><p>エラーを検出したら return していたorz</p>
+<p>例外 raise しなきゃ 500 にならないのが完全に忘却の彼方でした。しかも before_filter 書いたのは良いのだけれど、if の書き方が微妙で昨晩からハマッていたというorz</p>
+<p>とりあえずあと一時間あるので試験をがっつり書いて commit しておきたい。</p></p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2014/01/20/boke-orz/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Jan 19, 2014
+     - 1 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2014/01/19/curl-json-parameter/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/misc/">misc </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2014/01/19/curl-json-parameter/">curl に JSON パラメータ渡そうとしてハマった</a>
+  </h1>
+</header>
+
+        
+          <p>curl に -X POST 指定して -d で JSON なパラメータを渡そうとして &quot;{'security':{'part':'1','rating':'4'}}&quot; って指定してて軽くハマるなど。正しくは以下でしたorz '{&quot;security&quot;:{&quot;part&quot;:&quot;1&quot;,&quot;rating&quot;:&quot;4&quot;}}' いけません。</p>
+          
+        
+      </article>
+      
+      
+      
+
+
+
+
+
+
+<div class="pagination">
+
+    
+        
+        
+        
+        <a href="/" aria-label="First" class="label-pagination"><i class="fa fa-angle-double-left fa-lg"></i></a>
+    
+
+    
+    
+        <a href="/page/176/" aria-label="Previous" class="label-pagination"><i class="fa fa-angle-left fa-lg"> prev </i>
+    
+
+    
+    
+        <a href="/page/178/" aria-label="Next" class="label-pagination"> next <i class="fa fa-angle-right fa-lg"></i></a>
+    
+
+    
+    
+        <a href="/page/198/" aria-label="Last"><i class="fa fa-angle-double-right fa-lg"></i></a>
+    
+
+</div>
+
+  
+    </div>
+    
+
+<aside class="sidebar thirds">
+  <section class="first odd">
+
+    
+      <h1>About Me</h1>
+    
+
+    <p>
+      
+        <p><a href="https://about.me/yamanetoshi"><img src="/images/glider.png" alt="glider.png"/></a></p><p><strong>YAMANE Toshiaki</strong>(<a href="https://twitter.com/yamanetoshi">@yamanetoshi</a>)</p>
+      
+    </p>
+  </section>
+
+
+
+  
+  <ul class="sidebar-nav">
+    <li class="sidebar-nav-item">
+      <a target="_blank" href="https://github.com/yamanetoshi" title="https://github.com/yamanetoshi"><i class="fa fa-github fa-3x"></i></a>
+      
+      
+      <a target="_blank" href="https://twitter.com/yamanetoshi" title="https://twitter.com/yamanetoshi"><i class="fa fa-twitter fa-3x"></i></a>
+      
+         
+      
+      
+      
+      
+      
+      
+      <a target="_blank" href="https://www.instagram.com/yamanetoshi" title="https://www.instagram.com/yamanetoshi"><i class="fa fa-instagram fa-3x"></i></a>
+      
+
+    
+    
+    </li>
+  </ul>
+
+  
+
+  
+    
+      <section class="odd">
+        
+        
+      </section>
+    
+  
+
+  
+  
+  
+    
+      <section class="even">
+        <h1>Recent Posts</h1>
+        <ul id="recent_posts">
+          
+          
+            
+              <li class="post">
+                <a href="/blog/2020/03/27/hugo-transition/">hugo の移行</a>
+              </li>
+            
+          
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2020/02/10/go-pattern/">隅のカタチ</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2020/01/27/readable-code/">リーダブルコード</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2020/01/05/this-year/">今年</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2020/01/04/basic-form-of-life-and-death/">死活の基本形</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2019/12/31/new-years-eve/">おおみそか</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2019/12/27/bicycle-purchase/">自転車購入</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2019/12/25/year-end-todo/">年末年始の TODO</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2019/12/05/wrapping-up/">スッキリわかる Python 入門要約</a>
+              </li>
+            
+          
+        </ul>
+      </section>
+    
+  
+
+<section>
+    <h1>Books</h1>
+ <ul>
+<li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/4873117127/yamanetoshi-22/' target='_blank'><img src='/images/514ifs4Y5bL._SL160_.jpg' width='113' height='160' alt='コンピュータシステムの理論と実装 ―モダンなコンピュータの作り方' title='コンピュータシステムの理論と実装 ―モダンなコンピュータの作り方' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/4873116309/yamanetoshi-22/' target='_blank'><img src='/images/41SlY0zvpKL._SL160_.jpg' width='113' height='160' alt='Team Geek ―Googleのギークたちはいかにしてチームを作るのか' title='Team Geek ―Googleのギークたちはいかにしてチームを作るのか' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/4873114535/yamanetoshi-22/' target='_blank'><img src='/images/51NDW60LBQL._SL160_.jpg' width='125' height='160' alt='Prototyping Lab ―「作りながら考える」ためのArduino実践レシピ (Make:PROJECTS)' title='Prototyping Lab ―「作りながら考える」ためのArduino実践レシピ (Make:PROJECTS)' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/B0054RGYNQ/yamanetoshi-22/' target='_blank'><img src='/images/51F7PJ0KzYL._SL160_.jpg' width='124' height='160' alt='Fearless Change: Patterns for Introducing New Ideas' title='Fearless Change: Patterns for Introducing New Ideas' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/4774145211/yamanetoshi-22/' target='_blank'><img src='/images/515WitVr5lL._SL160_.jpg' width='112' height='160' alt='プロセッサを支える技術　　－－果てしなくスピードを追求する世界 (WEB+DB PRESS plus)' title='プロセッサを支える技術　　－－果てしなくスピードを追求する世界 (WEB+DB PRESS plus)' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/489471163X/yamanetoshi-22/' target='_blank'><img src='/images/51ZSMEJ9Y2L._SL160_.jpg' width='112' height='160' alt='計算機プログラムの構造と解釈' title='計算機プログラムの構造と解釈' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/4798023809/yamanetoshi-22/' target='_blank'><img src='/images/41R5gj5VRFL._SL160_.jpg' width='113' height='160' alt='入門Git' title='入門Git' /></a>
+</li>
+</ul>
+ </section>
+ <section>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+ <ins class="adsbygoogle"
+     style="display:inline-block;width:120px;height:600px"
+     data-ad-client="ca-pub-5885095939968393"
+     data-ad-slot="7922724663"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</section>
+  
+</aside>
+    
+  </div>
+</div>
+    <footer role="contentinfo">
+      <p>Copyright &copy; 2020  - <a href="https://weblog.metacircular-evaluator.org/license/">License</a> -
+        <span class="credit">Powered by <a target="_blank" href="https://gohugo.io">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/">Hugo-Octopress</a> theme.
+      </p>
+    </footer>
+
+    
+    
+    
+
+    
+      <script>
+        var _gaq=[['_setAccount','UA-45385426-1'],['_trackPageview']];
+        (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+        g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(g,s)}(document,'script'));
+      </script>
+    
+  </body>
+</html>
+   
+

@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+  
+    
+    
+      <link href="/css/fonts.css" rel="stylesheet" type="text/css">
+    
+  
+
+  
+  <title>/var/log/messages</title>
+
+  
+  
+  <link rel="stylesheet" href="/css/hugo-octopress.css">
+
+  
+  
+
+  
+    <link rel="stylesheet" href="/css/fork-awesome.min.css">
+  
+
+  
+  <link href="https://weblog.metacircular-evaluator.org/favicon.png" rel="icon">
+
+  
+  <link href="/index.xml" rel="alternate" type="application/rss+xml" title="/var/log/messages" />
+
+  <meta name="description" content="" />
+  <meta name="keywords" content="">
+  <meta name="author" content="">
+
+  
+  <meta name="generator" content="Hugo 0.67.0" />
+
+  
+  
+
+  
+  
+</head>
+<body>
+
+
+<header role="banner">
+<hgroup>
+  
+  <h1><a href="https://weblog.metacircular-evaluator.org/">/var/log/messages</a></h1>
+    <h2></h2>
+</hgroup></header>
+
+
+<nav role="navigation">
+<fieldset class="mobile-nav">
+  
+  <select onchange="location = this.value;">
+    <option value="">Navigate…</option>
+      
+  </select>
+</fieldset>
+
+
+<ul class="main-navigation">
+  
+  
+</ul>
+
+<ul class="subscription">
+  
+</ul>
+
+
+</nav>
+
+
+
+
+  
+
+<div id="main">
+  <div id="content">
+    <div class="blog-index">
+      
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Jul 24, 2014
+     - 3 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2014/07/24/memo-for-ansible-playbook/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/docker/">docker </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2014/07/24/memo-for-ansible-playbook/">ansible な playbook のための環境設定メモ</a>
+  </h1>
+</header>
+
+        
+          <p><p>とりあえず仮想リソースをいっこ確保して</p>
+<pre><code>$ sudo apt-get update
+$ sudo apt-get upgrade -y
+</code></pre>
+<p>む、MBA からだと locale なナニが出ますね。確認してみるに locales パケジが入っておりませなんだ。これ、この時点でスナップショット取得したいのですが (ぇ</p></p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2014/07/24/memo-for-ansible-playbook/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Jul 23, 2014
+     - 1 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2014/07/23/rale-assets-precompile-in-docker-rails-environment/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/rails/">rails </a><a class="label" href="https://weblog.metacircular-evaluator.org/categories/docker/">docker </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2014/07/23/rale-assets-precompile-in-docker-rails-environment/">docker な Rails 環境にて assets:precompile</a>
+  </h1>
+</header>
+
+        
+          <p><p>やはり、container は再起動しないと反映されませんでした。当り前ですね。手順的に</p>
+<pre><code>$ sudo docker.io stop `sudo docker.io ps -a|grep 'rails:latest'|awk '{print $1;}'`
+</code></pre>
+<p>で止めて</p>
+<pre><code>$ sudo docker.io rm `sudo docker.io ps -a|grep 'rails:latest'|awk '{print $1;}'`
+</code></pre>
+<p>で container を削除してから以下で</p>
+<pre><code>$ sudo docker.io run -i -t -v /home/fuga/rails_projects/hoge:/app --link redis:redis --link postgres:db --rm rails:latest bash -c &quot;cd /app &amp;&amp; RAILS_ENV=production bundle exec rake assets:precompile&quot;
+</code></pre>
+<p>asset pipeline をアレして以下で起動、で反映されてることを確認してます。</p>
+<pre><code>$ sudo docker.io run -d -p 3000:3000 -v /home/fuga/rails_projects/hoge:/app --link redis:redis --link postgres:db rails:latest bash -c &quot;cd /app &amp;&amp; RAILS_ENV=production bundle exec unicorn -p 3000&quot;
+</code></pre>
+<p>ぶっちゃけこのあたりも script だか alias だかにすべきですね。</p></p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2014/07/23/rale-assets-precompile-in-docker-rails-environment/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Jul 22, 2014
+     - 1 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2014/07/22/make-development-environment-of-rails4/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/programming/">programming </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2014/07/22/make-development-environment-of-rails4/">Rails4 開発環境作ってみます (2)</a>
+  </h1>
+</header>
+
+        
+          <p><p>とりあえず三つの container が動いた。</p>
+<pre><code>$ sudo docker.io ps -a
+CONTAINER ID        IMAGE                    COMMAND                CREATED             STATUS              PORTS                     NAMES
+7fbe569f3fbf        rails:latest             /start-server.sh       10 seconds ago      Up 10 seconds       0.0.0.0:3000-&gt;3000/tcp    rails                
+c49233f54278        postgres:latest          /usr/local/bin/run     20 hours ago        Up 20 hours         5432/tcp                  postgres,rails/db    
+ed4809b7d731        johncosta/redis:latest   /usr/bin/redis-serve   21 hours ago        Up 21 hours         0.0.0.0:49153-&gt;6379/tcp   rails/redis,redis    
+</code></pre>
+<p>netstat 見ると 3000 をリスンしています。</p></p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2014/07/22/make-development-environment-of-rails4/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Jul 22, 2014
+     - 1 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2014/07/22/noma-dong/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/misc/">misc </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2014/07/22/noma-dong/">ノマどん</a>
+  </h1>
+</header>
+
+        
+          <p>ある縁にて那覇市泉崎にある co-working space 運営な方と知り合いに。使用検討させて頂いてることから試しに使ってみて下さいな、とご案内頂いたので遠慮なくもくも</p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2014/07/22/noma-dong/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Jul 21, 2014
+     - 1 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2014/07/21/v-option-of-docker-run/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/programming/">programming </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2014/07/21/v-option-of-docker-run/">docker run の v オプション</a>
+  </h1>
+</header>
+
+        
+          <p>試してみたところ、nfsd 不要でした、 $ sudo docker.io run -t -i -v /home/devops/rails_projects/hoge:/opt ubuntu:12.04 /bin/bash でも相対パスでは NG でした。と、ゆーことで開発環境の実装すすめます。</p>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Jul 20, 2014
+     - 3 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2014/07/20/make-development-environment-of-rails4/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/programming/">programming </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2014/07/20/make-development-environment-of-rails4/">Rails4 開発環境作ってみます</a>
+  </h1>
+</header>
+
+        
+          <p><p>とりあえず目指す構成としては</p>
+<ul>
+<li>Ubuntu な仮想ホストに Docker および nfsd を導入</li>
+<li>Rails, PostgreSQL, Redis なコンテナ</li>
+<li>アプリのディレクトリは nfs で共有</li>
+<li>Rails コマンド叩きたい</li>
+</ul>
+<p>あと、仮想ホストの環境設定などは ansible を使って云々な形にしたいです。どうなるか。</p></p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2014/07/20/make-development-environment-of-rails4/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Jul 19, 2014
+     - 1 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2014/07/19/my-sister-comes-okinawa/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/misc/">misc </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2014/07/19/my-sister-comes-okinawa/">妹夫婦が遊びにきてくれました</a>
+  </h1>
+</header>
+
+        
+          <p>とりあえず栄町で待ち合わせて一軒目はべんり屋に。 饅頭うまうまでした、そして二軒目はボトルネックで端泉、とかトマトとか、 そして三軒目は奄美へ。</p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2014/07/19/my-sister-comes-okinawa/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Jul 18, 2014
+     - 1 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2014/07/18/memo/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/misc/">misc </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2014/07/18/memo/">備忘メモ</a>
+  </h1>
+</header>
+
+        
+          <p>今月はこのあたりについてもがっつり掘っておく方向です。ある意味ヤケクソ。 GoogleがAndroidソフトウェア開発の無料学習コースを提供、</p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2014/07/18/memo/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Jul 17, 2014
+     - 1 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2014/07/17/docker/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/misc/">misc </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2014/07/17/docker/">Docker</a>
+  </h1>
+</header>
+
+        
+          <p>自分メモ。development/test および production なナニについて検討要、ということで。 Dockerにまつわる誤解 【翻訳】DockerとVag</p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2014/07/17/docker/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      <article>
+        
+        
+
+<header>
+  <p class="meta">Jul 15, 2014
+     - 1 minute read 
+     - <a href="https://weblog.metacircular-evaluator.org/blog/2014/07/15/assert-streq-and-std-string/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="https://weblog.metacircular-evaluator.org/categories/misc/">misc </a>
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="https://weblog.metacircular-evaluator.org/blog/2014/07/15/assert-streq-and-std-string/">std::string でハマッた件</a>
+  </h1>
+</header>
+
+        
+          <p>ある手続きからの戻りな文字列の検証をしようとしていたら compilation error が。 error: no matching function for call to 'CmpHelperSTREQ とのこと。文字列を戻してるはずなんだけど、って思いつつソースツ</p>
+          
+            <footer>
+              <a href="https://weblog.metacircular-evaluator.org/blog/2014/07/15/assert-streq-and-std-string/" rel="full-article">Read On &rarr;</a>
+            </footer>
+          
+        
+      </article>
+      
+      
+      
+
+
+
+
+
+
+<div class="pagination">
+
+    
+        
+        
+        
+        <a href="/" aria-label="First" class="label-pagination"><i class="fa fa-angle-double-left fa-lg"></i></a>
+    
+
+    
+    
+        <a href="/page/147/" aria-label="Previous" class="label-pagination"><i class="fa fa-angle-left fa-lg"> prev </i>
+    
+
+    
+    
+        <a href="/page/149/" aria-label="Next" class="label-pagination"> next <i class="fa fa-angle-right fa-lg"></i></a>
+    
+
+    
+    
+        <a href="/page/198/" aria-label="Last"><i class="fa fa-angle-double-right fa-lg"></i></a>
+    
+
+</div>
+
+  
+    </div>
+    
+
+<aside class="sidebar thirds">
+  <section class="first odd">
+
+    
+      <h1>About Me</h1>
+    
+
+    <p>
+      
+        <p><a href="https://about.me/yamanetoshi"><img src="/images/glider.png" alt="glider.png"/></a></p><p><strong>YAMANE Toshiaki</strong>(<a href="https://twitter.com/yamanetoshi">@yamanetoshi</a>)</p>
+      
+    </p>
+  </section>
+
+
+
+  
+  <ul class="sidebar-nav">
+    <li class="sidebar-nav-item">
+      <a target="_blank" href="https://github.com/yamanetoshi" title="https://github.com/yamanetoshi"><i class="fa fa-github fa-3x"></i></a>
+      
+      
+      <a target="_blank" href="https://twitter.com/yamanetoshi" title="https://twitter.com/yamanetoshi"><i class="fa fa-twitter fa-3x"></i></a>
+      
+         
+      
+      
+      
+      
+      
+      
+      <a target="_blank" href="https://www.instagram.com/yamanetoshi" title="https://www.instagram.com/yamanetoshi"><i class="fa fa-instagram fa-3x"></i></a>
+      
+
+    
+    
+    </li>
+  </ul>
+
+  
+
+  
+    
+      <section class="odd">
+        
+        
+      </section>
+    
+  
+
+  
+  
+  
+    
+      <section class="even">
+        <h1>Recent Posts</h1>
+        <ul id="recent_posts">
+          
+          
+            
+              <li class="post">
+                <a href="/blog/2020/03/27/hugo-transition/">hugo の移行</a>
+              </li>
+            
+          
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2020/02/10/go-pattern/">隅のカタチ</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2020/01/27/readable-code/">リーダブルコード</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2020/01/05/this-year/">今年</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2020/01/04/basic-form-of-life-and-death/">死活の基本形</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2019/12/31/new-years-eve/">おおみそか</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2019/12/27/bicycle-purchase/">自転車購入</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2019/12/25/year-end-todo/">年末年始の TODO</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2019/12/05/wrapping-up/">スッキリわかる Python 入門要約</a>
+              </li>
+            
+          
+        </ul>
+      </section>
+    
+  
+
+<section>
+    <h1>Books</h1>
+ <ul>
+<li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/4873117127/yamanetoshi-22/' target='_blank'><img src='/images/514ifs4Y5bL._SL160_.jpg' width='113' height='160' alt='コンピュータシステムの理論と実装 ―モダンなコンピュータの作り方' title='コンピュータシステムの理論と実装 ―モダンなコンピュータの作り方' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/4873116309/yamanetoshi-22/' target='_blank'><img src='/images/41SlY0zvpKL._SL160_.jpg' width='113' height='160' alt='Team Geek ―Googleのギークたちはいかにしてチームを作るのか' title='Team Geek ―Googleのギークたちはいかにしてチームを作るのか' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/4873114535/yamanetoshi-22/' target='_blank'><img src='/images/51NDW60LBQL._SL160_.jpg' width='125' height='160' alt='Prototyping Lab ―「作りながら考える」ためのArduino実践レシピ (Make:PROJECTS)' title='Prototyping Lab ―「作りながら考える」ためのArduino実践レシピ (Make:PROJECTS)' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/B0054RGYNQ/yamanetoshi-22/' target='_blank'><img src='/images/51F7PJ0KzYL._SL160_.jpg' width='124' height='160' alt='Fearless Change: Patterns for Introducing New Ideas' title='Fearless Change: Patterns for Introducing New Ideas' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/4774145211/yamanetoshi-22/' target='_blank'><img src='/images/515WitVr5lL._SL160_.jpg' width='112' height='160' alt='プロセッサを支える技術　　－－果てしなくスピードを追求する世界 (WEB+DB PRESS plus)' title='プロセッサを支える技術　　－－果てしなくスピードを追求する世界 (WEB+DB PRESS plus)' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/489471163X/yamanetoshi-22/' target='_blank'><img src='/images/51ZSMEJ9Y2L._SL160_.jpg' width='112' height='160' alt='計算機プログラムの構造と解釈' title='計算機プログラムの構造と解釈' /></a>
+</li>
+ <li>
+<a href='https://www.amazon.co.jp/exec/obidos/ASIN/4798023809/yamanetoshi-22/' target='_blank'><img src='/images/41R5gj5VRFL._SL160_.jpg' width='113' height='160' alt='入門Git' title='入門Git' /></a>
+</li>
+</ul>
+ </section>
+ <section>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+ <ins class="adsbygoogle"
+     style="display:inline-block;width:120px;height:600px"
+     data-ad-client="ca-pub-5885095939968393"
+     data-ad-slot="7922724663"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</section>
+  
+</aside>
+    
+  </div>
+</div>
+    <footer role="contentinfo">
+      <p>Copyright &copy; 2020  - <a href="https://weblog.metacircular-evaluator.org/license/">License</a> -
+        <span class="credit">Powered by <a target="_blank" href="https://gohugo.io">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/">Hugo-Octopress</a> theme.
+      </p>
+    </footer>
+
+    
+    
+    
+
+    
+      <script>
+        var _gaq=[['_setAccount','UA-45385426-1'],['_trackPageview']];
+        (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+        g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(g,s)}(document,'script'));
+      </script>
+    
+  </body>
+</html>
+   
+

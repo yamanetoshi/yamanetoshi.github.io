@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>recommend on /var/log/messages</title>
+    <link>https://weblog.metacircular-evaluator.org/categories/recommend/</link>
+    <description>Recent content in recommend on /var/log/messages</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Sat, 15 Sep 2018 18:52:32 +0900</lastBuildDate>
+    
+	<atom:link href="https://weblog.metacircular-evaluator.org/categories/recommend/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Query Recommendation Based on Query Relevance Graph</title>
+      <link>https://weblog.metacircular-evaluator.org/blog/2018/09/15/query-recommendation-based-on-query-relevance-graph/</link>
+      <pubDate>Sat, 15 Sep 2018 18:52:32 +0900</pubDate>
+      
+      <guid>https://weblog.metacircular-evaluator.org/blog/2018/09/15/query-recommendation-based-on-query-relevance-graph/</guid>
+      <description>&lt;p&gt;以下なドキュメントを機械翻訳したので (一部のみ) 控えを。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.ibai-publishing.org/journal/issue_mldm/2016_july/9_1_3_26_mldm.pdf&#34;&gt;Query Recommendation based on Query Relevance Graph&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>Connecting to Aws Neptune From Local Environment</title>
+      <link>https://weblog.metacircular-evaluator.org/blog/2018/09/01/connecting-to-aws-neptune-from-local-environment/</link>
+      <pubDate>Sat, 01 Sep 2018 11:40:30 +0900</pubDate>
+      
+      <guid>https://weblog.metacircular-evaluator.org/blog/2018/09/01/connecting-to-aws-neptune-from-local-environment/</guid>
+      <description>&lt;p&gt;下記ドキュメントを某所にて機械翻訳したので以下にて控えを。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://medium.com/@ravelantunes/connecting-to-aws-neptune-from-local-environment-64c836548e89&#34;&gt;Connecting to Aws Neptune From Local Environment&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>Gremlin Tutorial</title>
+      <link>https://weblog.metacircular-evaluator.org/blog/2018/07/03/gremlin-tutorial/</link>
+      <pubDate>Tue, 03 Jul 2018 20:33:56 +0900</pubDate>
+      
+      <guid>https://weblog.metacircular-evaluator.org/blog/2018/07/03/gremlin-tutorial/</guid>
+      <description>&lt;p&gt;以下のドキュメントを機械翻訳してみたのでこちらにも控えを。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://academy.datastax.com/resources/getting-started-tinkerpop-and-gremlin&#34;&gt;Getting Started with TinkerPop and Gremlin&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>About Dithering</title>
+      <link>https://weblog.metacircular-evaluator.org/blog/2018/06/26/about-dithering/</link>
+      <pubDate>Tue, 26 Jun 2018 20:40:45 +0900</pubDate>
+      
+      <guid>https://weblog.metacircular-evaluator.org/blog/2018/06/26/about-dithering/</guid>
+      <description>&lt;p&gt;以下なドキュメントを見つけておりまして&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://bit.ly/1NlM9js&#34;&gt;A PRACTICAL GUIDE TO BUILDING RECOMMENDER SYSTEMS&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>Collaborative Filtering</title>
+      <link>https://weblog.metacircular-evaluator.org/blog/2018/06/25/collaborative-filtering/</link>
+      <pubDate>Mon, 25 Jun 2018 19:57:20 +0900</pubDate>
+      
+      <guid>https://weblog.metacircular-evaluator.org/blog/2018/06/25/collaborative-filtering/</guid>
+      <description>&lt;p&gt;ちょっと情報取り纏める機会があったので、こちらにて共有。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Item to Item Collaborative Filtering</title>
+      <link>https://weblog.metacircular-evaluator.org/blog/2018/06/23/item-to-item-collaborative-filtering/</link>
+      <pubDate>Sat, 23 Jun 2018 09:23:04 +0900</pubDate>
+      
+      <guid>https://weblog.metacircular-evaluator.org/blog/2018/06/23/item-to-item-collaborative-filtering/</guid>
+      <description>&lt;p&gt;以下なドキュメント機械翻訳控えを投入。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.cs.umd.edu/~samir/498/Amazon-Recommendations.pdf&#34;&gt;Amazon.com Recommendations&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>Practical Machine Learning</title>
+      <link>https://weblog.metacircular-evaluator.org/blog/2018/06/22/practical-machine-learning/</link>
+      <pubDate>Fri, 22 Jun 2018 20:37:10 +0900</pubDate>
+      
+      <guid>https://weblog.metacircular-evaluator.org/blog/2018/06/22/practical-machine-learning/</guid>
+      <description>&lt;p&gt;オラの村で download できることを知りまして、入手した次第。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.oreilly.co.jp/editors/archives/2014/08/practical-machine-learning.html&#34;&gt;電子書籍『実践 機械学習』の無料ダウンロードが可能に！&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;四年くらい前の話ですね (汗&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

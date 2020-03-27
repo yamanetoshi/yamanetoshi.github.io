@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Go on /var/log/messages</title>
+    <link>https://weblog.metacircular-evaluator.org/categories/Go/</link>
+    <description>Recent content in Go on /var/log/messages</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Mon, 10 Feb 2020 19:48:42 +0900</lastBuildDate>
+    
+	<atom:link href="https://weblog.metacircular-evaluator.org/categories/Go/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>隅のカタチ</title>
+      <link>https://weblog.metacircular-evaluator.org/blog/2020/02/10/go-pattern/</link>
+      <pubDate>Mon, 10 Feb 2020 19:48:42 +0900</pubDate>
+      
+      <guid>https://weblog.metacircular-evaluator.org/blog/2020/02/10/go-pattern/</guid>
+      <description>&lt;p&gt;某所のレクチャで三々に置かれる形の話が。&lt;/p&gt;
+&lt;blockquote class=&#34;instagram-media&#34; data-instgrm-captioned data-instgrm-permalink=&#34;https://www.instagram.com/p/B8Ve-9xjpL2/?utm_source=ig_embed&amp;amp;utm_campaign=loading&#34; data-instgrm-version=&#34;12&#34; style=&#34; background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);&#34;&gt;&lt;div style=&#34;padding:16px;&#34;&gt; &lt;a href=&#34;https://www.instagram.com/p/B8Ve-9xjpL2/?utm_source=ig_embed&amp;amp;utm_campaign=loading&#34; style=&#34; background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;&#34; target=&#34;_blank&#34;&gt; &lt;div style=&#34; display: flex; flex-direction: row; align-items: center;&#34;&gt; &lt;div style=&#34;background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;&#34;&gt;&lt;/div&gt; &lt;div style=&#34;display: flex; flex-direction: column; flex-grow: 1; justify-content: center;&#34;&gt; &lt;div style=&#34; background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;&#34;&gt;&lt;/div&gt; &lt;div style=&#34; background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;&#34;&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div style=&#34;padding: 19% 0;&#34;&gt;&lt;/div&gt; &lt;div style=&#34;display:block; height:50px; margin:0 auto 12px; width:50px;&#34;&gt;&lt;svg width=&#34;50px&#34; height=&#34;50px&#34; viewBox=&#34;0 0 60 60&#34; version=&#34;1.1&#34; xmlns=&#34;https://www.w3.org/2000/svg&#34; xmlns:xlink=&#34;https://www.w3.org/1999/xlink&#34;&gt;&lt;g stroke=&#34;none&#34; stroke-width=&#34;1&#34; fill=&#34;none&#34; fill-rule=&#34;evenodd&#34;&gt;&lt;g transform=&#34;translate(-511.000000, -20.000000)&#34; fill=&#34;#000000&#34;&gt;&lt;g&gt;&lt;path d=&#34;M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631&#34;&gt;&lt;/path&gt;&lt;/g&gt;&lt;/g&gt;&lt;/g&gt;&lt;/svg&gt;&lt;/div&gt;&lt;div style=&#34;padding-top: 8px;&#34;&gt; &lt;div style=&#34; color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;&#34;&gt; View this post on Instagram&lt;/div&gt;&lt;/div&gt;&lt;div style=&#34;padding: 12.5% 0;&#34;&gt;&lt;/div&gt; &lt;div style=&#34;display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;&#34;&gt;&lt;div&gt; &lt;div style=&#34;background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);&#34;&gt;&lt;/div&gt; &lt;div style=&#34;background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;&#34;&gt;&lt;/div&gt; &lt;div style=&#34;background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);&#34;&gt;&lt;/div&gt;&lt;/div&gt;&lt;div style=&#34;margin-left: 8px;&#34;&gt; &lt;div style=&#34; background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;&#34;&gt;&lt;/div&gt; &lt;div style=&#34; width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)&#34;&gt;&lt;/div&gt;&lt;/div&gt;&lt;div style=&#34;margin-left: auto;&#34;&gt; &lt;div style=&#34; width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);&#34;&gt;&lt;/div&gt; &lt;div style=&#34; background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);&#34;&gt;&lt;/div&gt; &lt;div style=&#34; width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);&#34;&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/a&gt; &lt;p style=&#34; margin:8px 0 0 0; padding:0 4px;&#34;&gt; &lt;a href=&#34;https://www.instagram.com/p/B8Ve-9xjpL2/?utm_source=ig_embed&amp;amp;utm_campaign=loading&#34; style=&#34; color:#000; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none; word-wrap:break-word;&#34; target=&#34;_blank&#34;&gt;三々に入られて押さえてハネられた、の図&lt;/a&gt;&lt;/p&gt; &lt;p style=&#34; color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;&#34;&gt;A post shared by &lt;a href=&#34;https://www.instagram.com/yamanetoshi/?utm_source=ig_embed&amp;amp;utm_campaign=loading&#34; style=&#34; color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px;&#34; target=&#34;_blank&#34;&gt; YAMANE Toshiaki&lt;/a&gt; (@yamanetoshi) on &lt;time style=&#34; font-family:Arial,sans-serif; font-size:14px; line-height:17px;&#34; datetime=&#34;2020-02-09T06:14:41+00:00&#34;&gt;Feb 8, 2020 at 10:14pm PST&lt;/time&gt;&lt;/p&gt;&lt;/div&gt;&lt;/blockquote&gt; &lt;script async src=&#34;//www.instagram.com/embed.js&#34;&gt;&lt;/script&gt;
+色々な含みがあるのね、と思ったので自分メモ。</description>
+    </item>
+    
+    <item>
+      <title>死活の基本形</title>
+      <link>https://weblog.metacircular-evaluator.org/blog/2020/01/04/basic-form-of-life-and-death/</link>
+      <pubDate>Sat, 04 Jan 2020 17:33:51 +0900</pubDate>
+      
+      <guid>https://weblog.metacircular-evaluator.org/blog/2020/01/04/basic-form-of-life-and-death/</guid>
+      <description>&lt;p&gt;死活の本見てるのですが、例えば依田ノートであればここで出てくる形として&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;隅の六目型&lt;/li&gt;
+&lt;li&gt;隅の八目型&lt;/li&gt;
+&lt;li&gt;辺のクシ型&lt;/li&gt;
+&lt;li&gt;一合マス&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;など (ざっくりでスミマセン) になってます。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>draw.io</title>
+      <link>https://weblog.metacircular-evaluator.org/blog/2018/11/19/chikun-toramaru-nhk/</link>
+      <pubDate>Mon, 19 Nov 2018 20:00:58 +0900</pubDate>
+      
+      <guid>https://weblog.metacircular-evaluator.org/blog/2018/11/19/chikun-toramaru-nhk/</guid>
+      <description>&lt;p&gt;図、なマンガを書く用事ができたので使ってみましたが意外に良かったです。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.draw.io/&#34;&gt;https://www.draw.io/&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>チクン先生と虎丸くんのナニが youtube に</title>
+      <link>https://weblog.metacircular-evaluator.org/blog/2018/11/18/chikun-toramaru-nhk/</link>
+      <pubDate>Sun, 18 Nov 2018 19:19:42 +0900</pubDate>
+      
+      <guid>https://weblog.metacircular-evaluator.org/blog/2018/11/18/chikun-toramaru-nhk/</guid>
+      <description>&lt;p&gt;これっていいのか、と言いつつ見ていたり。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>9 路盤</title>
+      <link>https://weblog.metacircular-evaluator.org/blog/2018/09/21/9-ro-ban/</link>
+      <pubDate>Fri, 21 Sep 2018 20:47:30 +0900</pubDate>
+      
+      <guid>https://weblog.metacircular-evaluator.org/blog/2018/09/21/9-ro-ban/</guid>
+      <description>&lt;p&gt;ハンディーなやつを購入してしまった。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.amazon.co.jp/dp/B07F9PQ47K&#34;&gt;にゃんこならべの 9 路盤セット&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;持ち歩いても相手が居なさげですが、どうしたものか。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>囲碁とはどういうゲームなのか</title>
+      <link>https://weblog.metacircular-evaluator.org/blog/2018/09/19/what-kind-of-game-is-go/</link>
+      <pubDate>Wed, 19 Sep 2018 20:22:05 +0900</pubDate>
+      
+      <guid>https://weblog.metacircular-evaluator.org/blog/2018/09/19/what-kind-of-game-is-go/</guid>
+      <description>&lt;p&gt;囲碁棋士の大橋さんが以下なソレを配信、って報せを tweet にてキャッチ。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.froggy.money/12072/&#34;&gt;3 分でわかる囲碁入門&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;これは面白い。とりあえず 9 路盤で打てるのを目標に、とのこと。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>二十一世紀の打ち方</title>
+      <link>https://weblog.metacircular-evaluator.org/blog/2018/07/23/study-go-game/</link>
+      <pubDate>Mon, 23 Jul 2018 21:00:22 +0900</pubDate>
+      
+      <guid>https://weblog.metacircular-evaluator.org/blog/2018/07/23/study-go-game/</guid>
+      <description>&lt;p&gt;マーケットプレイスにて質が良い状態のものを入手。&lt;/p&gt;
+&lt;p&gt;&lt;a data-flickr-embed=&#34;true&#34;  href=&#34;https://www.flickr.com/photos/yamane-toshiaki/28658544567/in/dateposted-public/&#34; title=&#34;勉強します&#34;&gt;&lt;img src=&#34;https://farm2.staticflickr.com/1763/28658544567_7a61481645_z.jpg&#34; width=&#34;640&#34; height=&#34;640&#34; alt=&#34;勉強します&#34;&gt;&lt;/a&gt;&lt;script async src=&#34;//embedr.flickr.com/assets/client-code.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Go by Examples (3)</title>
+      <link>https://weblog.metacircular-evaluator.org/blog/2018/03/21/bo-by-examples/</link>
+      <pubDate>Wed, 21 Mar 2018 20:56:58 +0900</pubDate>
+      
+      <guid>https://weblog.metacircular-evaluator.org/blog/2018/03/21/bo-by-examples/</guid>
+      <description>&lt;p&gt;続き、は Switch の次ですね。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Go by Examples (2)</title>
+      <link>https://weblog.metacircular-evaluator.org/blog/2018/03/14/bo-by-examples/</link>
+      <pubDate>Wed, 14 Mar 2018 22:16:55 +0900</pubDate>
+      
+      <guid>https://weblog.metacircular-evaluator.org/blog/2018/03/14/bo-by-examples/</guid>
+      <description>&lt;p&gt;続き、ということで Switch から。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Go by Examples</title>
+      <link>https://weblog.metacircular-evaluator.org/blog/2018/03/13/bo-by-examples/</link>
+      <pubDate>Tue, 13 Mar 2018 21:45:27 +0900</pubDate>
+      
+      <guid>https://weblog.metacircular-evaluator.org/blog/2018/03/13/bo-by-examples/</guid>
+      <description>&lt;p&gt;以下、スキを見て云々するのに良いボリュームなのでコード見てふむふむと言ってるのですが、コメントを控えておくことにしようかなと思った次第す。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Linux におけるスクリプト言語としての Go の使用</title>
+      <link>https://weblog.metacircular-evaluator.org/blog/2018/02/22/using-go-as-a-scripting-language-in-linux/</link>
+      <pubDate>Thu, 22 Feb 2018 20:15:16 +0900</pubDate>
+      
+      <guid>https://weblog.metacircular-evaluator.org/blog/2018/02/22/using-go-as-a-scripting-language-in-linux/</guid>
+      <description>&lt;p&gt;はてブから以下なエントリを見つけたのですが面白かったので確認エントリ投入してみます。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.cloudflare.com/using-go-as-a-scripting-language-in-linux/&#34;&gt;Using Go as a scripting language in Linux&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>昨日の PR について</title>
+      <link>https://weblog.metacircular-evaluator.org/blog/2017/10/22/about-yesterday-pr/</link>
+      <pubDate>Sun, 22 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://weblog.metacircular-evaluator.org/blog/2017/10/22/about-yesterday-pr/</guid>
+      <description>&lt;p&gt;O(n^2) ではないのではないか、と思いはじめている件。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>pull request もらった</title>
+      <link>https://weblog.metacircular-evaluator.org/blog/2017/10/21/i-got-a-pull-request/</link>
+      <pubDate>Sat, 21 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://weblog.metacircular-evaluator.org/blog/2017/10/21/i-got-a-pull-request/</guid>
+      <description>fibonacci な実装、再帰ではなくて array 使えば? とのこと。 Made it on a more efficient way. Now complexity is O(n) instead of O(n^2) 確かにこうすりゃ O(n) になりますね。つうかオレオレなナニで PR もらうの初で</description>
+    </item>
+    
+    <item>
+      <title>Go 導入関連 (windows の話)</title>
+      <link>https://weblog.metacircular-evaluator.org/blog/2017/10/19/go-install-in-windouz/</link>
+      <pubDate>Thu, 19 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://weblog.metacircular-evaluator.org/blog/2017/10/19/go-install-in-windouz/</guid>
+      <description>&lt;p&gt;インストーラでインストールしたら /c/Go 配下に導入されました。以下のコマンド実行してみると&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ go env GOPATH
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;$HOME/go が出力される。これを GOPATH にすれば良いのか。とりあえずディレクトリは自分で作成する必要があるらしい。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ mkdir $(go env GOPATH)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;あとは以下を &lt;code&gt;.bash_profile&lt;/code&gt; あたりに書いておくのかどうか。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;export PATH=$PATH:$(go env GOPATH)/bin
+export GOPATH=$(go env GOPATH)
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>形を憶える</title>
+      <link>https://weblog.metacircular-evaluator.org/blog/2017/10/03/learn-kata/</link>
+      <pubDate>Tue, 03 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://weblog.metacircular-evaluator.org/blog/2017/10/03/learn-kata/</guid>
+      <description>ええと、英語も同様だそうで。憶えるという行為が超ニガ手というか、そもそも自分で後天性記憶不全と言ってる位なのですが、頑張らないと駄目みたい。</description>
+    </item>
+    
+    <item>
+      <title>四路の問題 (随分前の問題ですが)</title>
+      <link>https://weblog.metacircular-evaluator.org/blog/2017/09/28/yon-ro-problem/</link>
+      <pubDate>Thu, 28 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://weblog.metacircular-evaluator.org/blog/2017/09/28/yon-ro-problem/</guid>
+      <description>なんとなくググッてて以下を発見。別途確認します。 張栩棋聖の挑戦状「4路」</description>
+    </item>
+    
+    <item>
+      <title>4x4 GO puzzle</title>
+      <link>https://weblog.metacircular-evaluator.org/blog/2017/09/24/4x4-go-puzzle/</link>
+      <pubDate>Sun, 24 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://weblog.metacircular-evaluator.org/blog/2017/09/24/4x4-go-puzzle/</guid>
+      <description>本日、以下が着信。 囲碁パズル 4路盤 問題集が那覇のジュンク堂にあるみたいなので調達の方向です。 よんろのごのほん 来週の部活に (ry</description>
+    </item>
+    
+    <item>
+      <title>玄々碁経</title>
+      <link>https://weblog.metacircular-evaluator.org/blog/2017/09/18/gen-gen-go-kyou/</link>
+      <pubDate>Mon, 18 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://weblog.metacircular-evaluator.org/blog/2017/09/18/gen-gen-go-kyou/</guid>
+      <description>これ、単純に読みものベースで読んでも面白い。とりあえずぐわっと速読して脳内盤の訓練に戻ったらどんな効果があるのかな。 玄々碁経 それにしてもこれ</description>
+    </item>
+    
+    <item>
+      <title>玄々碁経</title>
+      <link>https://weblog.metacircular-evaluator.org/blog/2017/09/08/gen-gen-go-kyou/</link>
+      <pubDate>Fri, 08 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://weblog.metacircular-evaluator.org/blog/2017/09/08/gen-gen-go-kyou/</guid>
+      <description>FB にて share されてるソレ、とりあえず脳内盤駒では再現できました。 玄々碁経の問題 意外に逃げれるものなのだな、と。つうか玄々碁経欲しひ。 途中のナニが</description>
+    </item>
+    
+    <item>
+      <title>デルタ碁</title>
+      <link>https://weblog.metacircular-evaluator.org/blog/2017/09/07/delta-go/</link>
+      <pubDate>Thu, 07 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://weblog.metacircular-evaluator.org/blog/2017/09/07/delta-go/</guid>
+      <description>入手して実装確認し始めています。面白い。 というか GTP 喋れる実装が参加できる floodgate みたいな囲碁のサーバってないのかな。別途探してみようと思います。 あ</description>
+    </item>
+    
+    <item>
+      <title>Leela</title>
+      <link>https://weblog.metacircular-evaluator.org/blog/2017/09/05/leela/</link>
+      <pubDate>Tue, 05 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://weblog.metacircular-evaluator.org/blog/2017/09/05/leela/</guid>
+      <description>BrainKing で 3-dan の人と対局させて頂いてるのですが、全然駄目。トレーニングに良い道具が無いかな、と思って探してみたら以下なエントリを発見。 家庭に一台、囲</description>
+    </item>
+    
+    <item>
+      <title>詰碁トレーニング</title>
+      <link>https://weblog.metacircular-evaluator.org/blog/2017/09/04/results-of-training/</link>
+      <pubDate>Mon, 04 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://weblog.metacircular-evaluator.org/blog/2017/09/04/results-of-training/</guid>
+      <description>平本メソドな訓練に勤しんでおります。以下なナニ。 問題をじっと見て、形を覚え、碁盤もしくは碁罫紙に問題を再現 どこまで効果が出てるのか、と思い詰</description>
+    </item>
+    
+    <item>
+      <title>デルタ碁導入</title>
+      <link>https://weblog.metacircular-evaluator.org/blog/2017/08/12/install-delta-go/</link>
+      <pubDate>Sat, 12 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://weblog.metacircular-evaluator.org/blog/2017/08/12/install-delta-go/</guid>
+      <description>&lt;p&gt;とりあえず Linux な環境で。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>認証文字列の隠し方</title>
+      <link>https://weblog.metacircular-evaluator.org/blog/2016/02/28/how-to-hide-authentication-string/</link>
+      <pubDate>Sun, 28 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://weblog.metacircular-evaluator.org/blog/2016/02/28/how-to-hide-authentication-string/</guid>
+      <description>別なファイルで以下な事しておいて package main var authToken = &amp;quot;&amp;lt;authentication string&amp;gt;&amp;quot; 1リリースな branch (非公開) で実際のソレ、を入れておきつつ開発な branch から merge する、のかどうか。</description>
+    </item>
+    
+    <item>
+      <title>Go で API 叩く件</title>
+      <link>https://weblog.metacircular-evaluator.org/blog/2016/02/27/restful-api-access-by-golang/</link>
+      <pubDate>Sat, 27 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://weblog.metacircular-evaluator.org/blog/2016/02/27/restful-api-access-by-golang/</guid>
+      <description>&lt;p&gt;なんかいいの発見。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/h2non/gentleman&#34;&gt;h2non/gentleman&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;何かで API を云々だったので使ってみようかな。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>scp してみる</title>
+      <link>https://weblog.metacircular-evaluator.org/blog/2016/02/23/do-scp-in-golang/</link>
+      <pubDate>Tue, 23 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://weblog.metacircular-evaluator.org/blog/2016/02/23/do-scp-in-golang/</guid>
+      <description>&lt;p&gt;材料以下。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://gist.github.com/jedy/3357393&#34;&gt;jedy/go_scp.go&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/tmc/scp&#34;&gt;tmc/scp&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://stackoverflow.com/questions/24437809/&#34;&gt;Connect to a server using SSH and a pem / key with golang&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://golang.jp/code&#34;&gt;Goコードの書き方&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>godeb</title>
+      <link>https://weblog.metacircular-evaluator.org/blog/2016/02/22/godeb/</link>
+      <pubDate>Mon, 22 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://weblog.metacircular-evaluator.org/blog/2016/02/22/godeb/</guid>
+      <description>&lt;p&gt;でびあんの golang は 1.0.x にて以下のナニに沿って 1.2.x を導入。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.labix.org/2013/06/15/in-flight-deb-packages-of-go&#34;&gt;In-flight deb packages of Go&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>Revel なプロトタイプを heroku にアレしてみた</title>
+      <link>https://weblog.metacircular-evaluator.org/blog/2015/11/06/deploy-revel-prototype/</link>
+      <pubDate>Fri, 06 Nov 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://weblog.metacircular-evaluator.org/blog/2015/11/06/deploy-revel-prototype/</guid>
+      <description>&lt;p&gt;手順以下です。備忘です。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Revel 修行</title>
+      <link>https://weblog.metacircular-evaluator.org/blog/2015/11/04/revel-training/</link>
+      <pubDate>Wed, 04 Nov 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://weblog.metacircular-evaluator.org/blog/2015/11/04/revel-training/</guid>
+      <description>&lt;p&gt;とりあえず、以下なリポジトリを clone してみます。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/revel/samples&#34;&gt;revel/samples&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;と、その前に環境確認を。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>godeb</title>
+      <link>https://weblog.metacircular-evaluator.org/blog/2015/09/24/godeb/</link>
+      <pubDate>Thu, 24 Sep 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://weblog.metacircular-evaluator.org/blog/2015/09/24/godeb/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://godeb.s3.amazonaws.com/godeb-amd64.tar.gz&#34;&gt;x86 64-bit binary&lt;/a&gt; から godeb-amd64.tar.gz を落として&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;./godeb install
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;を実行。どうなるか。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Go kit 面白そう</title>
+      <link>https://weblog.metacircular-evaluator.org/blog/2015/09/14/go-kit/</link>
+      <pubDate>Mon, 14 Sep 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://weblog.metacircular-evaluator.org/blog/2015/09/14/go-kit/</guid>
+      <description>はてブ経由で以下を発見。 Goと「Go kit」によるマイクロサービス構築 面白そうなのでしばらくおいかけてみる方向にて。</description>
+    </item>
+    
+    <item>
+      <title>Go のメモ</title>
+      <link>https://weblog.metacircular-evaluator.org/blog/2015/09/12/go-memo/</link>
+      <pubDate>Sat, 12 Sep 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://weblog.metacircular-evaluator.org/blog/2015/09/12/go-memo/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;得意分野は「非同期ネットワークサーバ」とのこと&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://golang.org/doc/code.html&#34;&gt;How to Write Go Code&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://tour.golang.org&#34;&gt;A Tour of Go&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://golang.org/doc/effective_go.html&#34;&gt;Effective Go&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;gdb できるらしい&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;strace が楽なこともあるらしい&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>Revel</title>
+      <link>https://weblog.metacircular-evaluator.org/blog/2015/09/09/revel/</link>
+      <pubDate>Wed, 09 Sep 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://weblog.metacircular-evaluator.org/blog/2015/09/09/revel/</guid>
+      <description>どうも「最速」フルスタック Web フレームワーク、らしい。 nginx でリバプロで云々できる模様 Heroku で云々、がいっちゃんお手軽なのかどうか git は 2.3 とかでないと導</description>
+    </item>
+    
+  </channel>
+</rss>
