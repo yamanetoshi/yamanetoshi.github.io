@@ -125,7 +125,47 @@
   goldmark:
     renderer:
       unsafe: true
-</code></pre>
+</code></pre><h2 id="追記">追記</h2>
+<p>github.io が更新できず、だったのですが、github 側のリポジトリを初期化したらイケました。</p>
+<h2 id="さらに追記">さらに追記</h2>
+<p>コマンドも控えとこ。</p>
+<ul>
+<li>ポストの作成</li>
+</ul>
+<pre><code>$ hugo new post/yyyy-mm-dd-slug-string.md
+</code></pre><ul>
+<li>ローカル動作確認</li>
+</ul>
+<pre><code>$ hugo server --theme=Hugo-Octopress
+</code></pre><ul>
+<li>github に投入するスクリプト以下です</li>
+</ul>
+<pre><code>#!/bin/bash
+
+echo -e &quot;\033[0;32mDeploying updates to GitHub...\033[0m&quot;
+
+# Build the project.
+# hugo # if using a theme, replace with `hugo -t &lt;YOURTHEME&gt;`
+hugo -t Hugo-Octopress # if using a theme, replace with `hugo -t &lt;YOURTHEME&gt;`
+
+# Go To Public folder
+cd public
+# Add changes to git.
+git add .
+
+# Commit changes.
+msg=&quot;rebuilding site `date`&quot;
+if [ $# -eq 1 ]
+  then msg=&quot;$1&quot;
+fi
+git commit -m &quot;$msg&quot;
+
+# Push source and build repos.
+git push origin master
+
+# Come Back up to the Project Root
+cd ..
+</code></pre><p>まだ設定が微妙なようです。別途確認の方向。</p>
         </div>
         
 
