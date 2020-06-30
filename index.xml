@@ -6,10 +6,25 @@
     <description>Recent content on /var/log/messages</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Fri, 27 Mar 2020 19:48:42 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 30 Jun 2020 21:52:42 +0900</lastBuildDate>
     
 	<atom:link href="https://weblog.metacircular-evaluator.org/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>最近の囲碁ネタ</title>
+      <link>https://weblog.metacircular-evaluator.org/blog/2020/06/30/igo/</link>
+      <pubDate>Tue, 30 Jun 2020 21:52:42 +0900</pubDate>
+      
+      <guid>https://weblog.metacircular-evaluator.org/blog/2020/06/30/igo/</guid>
+      <description>&lt;p&gt;全ブッコミで修行してます。最近は&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;石の形? の参考書というか問題集?&lt;/li&gt;
+&lt;li&gt;大橋さんのコンパクト詰碁 180&lt;/li&gt;
+&lt;li&gt;韓国囲碁ドリル初級編の石取りな 3 巻&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;で練習しつつ、ではありますが積読がサバキ切れなくなりつつあります。あ、あと試しに応募してみた&lt;a href=&#34;https://www.nihonkiin.or.jp/news/member/2020_2.html&#34;&gt;段級位認定&lt;/a&gt;は 2 級認定な点が取れたみたいです。個人的にはもっと点が取れているはずだったんですが (何&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>hugo の移行</title>
